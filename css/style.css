@@ -4,6 +4,21 @@ body {
   }
   
   h1 {
+    color: #831aa3;
+  }
+  nav ul {
+    list-style: none; /* Удаляет маркированные списки */
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav li {
+    display: inline; /* Размещает элементы в одну строку */
+    margin-right: 10px;
+  }
+  
+  nav a {
+    text-decoration: none; /* Удаляет подчеркивание */
     color: #333;
   }
   

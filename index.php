@@ -14,6 +14,7 @@
   <body>
     <header>
       <h1>ТОП Сервис</h1>
+      <link rel="stylesheet" href="css/style.css">
       <p>Автоматизация ресторанного бизнеса</p>
       <nav>
         <ul>
