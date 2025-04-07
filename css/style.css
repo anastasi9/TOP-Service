@@ -1,24 +1,65 @@
 body {
-    font-family: sans-serif;
-    margin: 20px;
-  }
-  
-  h1 {
-    color: #831aa3;
-  }
-  nav ul {
-    list-style: none; /* Удаляет маркированные списки */
-    margin: 0;
-    padding: 0;
-  }
-  
-  nav li {
-    display: inline; /* Размещает элементы в одну строку */
-    margin-right: 10px;
-  }
-  
-  nav a {
-    text-decoration: none; /* Удаляет подчеркивание */
-    color: #333;
-  }
-  
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: #533b77;
+  color: #ffffff; /* Белый текст для контраста */
+  line-height: 1.6;
+}
+
+/* Шапка */
+header {
+  background-color: rgba(0, 0, 0, 0.2); /* Полупрозрачный черный */
+  padding: 20px 0;
+  backdrop-filter: blur(5px); /* Размытие фона */
+}
+
+h1 {
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Навигация */
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Основной контент */
+main {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Подвал */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.3);
+  margin-top: auto;
+}

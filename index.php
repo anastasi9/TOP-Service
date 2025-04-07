@@ -3,34 +3,23 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ТОП Сервис автоматизация ресторанного бизнеса</title>
-    <link rel="stylesheet" href="./styles/style.css">
+    <title>ТОП-Сервис автоматизация ресторанного бизнеса</title>
+
+    <meta name="description" content="Автоматизация ресторанного бизнеса от компании ТОП-Сервис. IT-решения для HoReCa.">
+    <meta name="keywords" content="автоматизация, рестораны, IT, HoReCa, ТОП-Сервис">
+
+    <link rel="stylesheet" href="css/style.css">
 
     <meta property="og:title" content="Заголовок страницы в OG">
     <meta property="og:description" content="Описание страницы в OG">
     <meta property="og:image" content="https://example.com/image.jpg">
     <meta property="og:url" content="https://example.com/">
   </head>
-  <body>
-    <header>
-      <h1>ТОП Сервис</h1>
-      <link rel="stylesheet" href="css/style.css">
-      <p>Автоматизация ресторанного бизнеса</p>
-      <nav>
-        <ul>
-          <li><a href="index.php">Главная</a></li>
-          <li><a href="about.php">О нас</a></li>
-          <li><a href="contact.php">Контакты</a></li>
-        </ul>
-      </nav>
 
-      <nav>
-        <ul>
-          <li><a href="index.html">Эта страница</a></li>
-          <li><a href="catalog.html">Другая страница</a></li>
-        </ul>
-      </nav>
-    </header>
+  <body>
+
+    <?php include('includes/header.php'); ?>
+
     <main>
       <article>
         <section>
@@ -49,9 +38,7 @@
         </section>
       </article>
     </main>
-    <footer>
-      <p>футер</p>
-    </footer>
+    <?php include('includes/footer.php'); ?>
     <!-- сюда можно подключить jquery <script src="scripts/app.js" defer></script> -->
   </body>
 </html>
