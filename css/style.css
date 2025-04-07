@@ -63,3 +63,21 @@ footer {
   background-color: rgba(0, 0, 0, 0.3);
   margin-top: auto;
 }
+
+.registration-form {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 5px;
+}
+
+.invalid-feedback {
+  color: #dc3545;
+  display: block;
+  margin-top: 5px;
+}
+
+.is-invalid {
+  border-color: #dc3545;
+}
