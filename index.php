@@ -6,26 +6,27 @@ require_once 'includes/auth.php';  // Сессия запускается зде
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ТОП-Сервис автоматизация ресторанного бизнеса</title>
-    <meta name="description" content="Автоматизация ресторанного бизнеса от компании ТОП-Сервис. IT-решения для HoReCa.">
-    <meta name="keywords" content="автоматизация, рестораны, IT, HoReCa, ТОП-Сервис">
+    <title>ТОП Сервис автоматизация ресторанного бизнеса</title>
+    <meta name="description" content="Автоматизация ресторанного бизнеса от компании ТОП Сервис. IT-решения для HoReCa.">
+    <meta name="keywords" content="автоматизация, рестораны, IT, HoReCa, ТОПСервис">
     <link rel="stylesheet" href="css/style.css">
     <meta property="og:title" content="Заголовок страницы в OG">
     <meta property="og:description" content="Описание страницы в OG">
     <meta property="og:image" content="https://example.com/image.jpg">
     <meta property="og:url" content="https://example.com/">
 
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
+
     
 </head>
 
 <body>
     <?php 
-    // Подключаем header.php только один раз
+    
     include_once 'includes/header.php'; 
     ?>
 
@@ -54,3 +55,4 @@ require_once 'includes/auth.php';  // Сессия запускается зде
     <script src="scripts/app.js" defer></script>
 </body>
 </html>
+

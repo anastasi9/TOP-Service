@@ -10,7 +10,7 @@
             <li><a href="about.php">О нас</a></li>
             <li><a href="contact.php">Контакты</a></li>
             
-            <!-- Убрали лишние ссылки на .html -->
+            
             
             <?php if (isset($_SESSION['user'])): ?>
                 <!-- Админские/модераторские ссылки -->
