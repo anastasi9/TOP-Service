@@ -9,7 +9,7 @@ require_once 'includes/auth.php';  // Сессия запускается зде
     <title>ТОП Сервис автоматизация ресторанного бизнеса</title>
     <meta name="description" content="Автоматизация ресторанного бизнеса от компании ТОП Сервис. IT-решения для HoReCa.">
     <meta name="keywords" content="автоматизация, рестораны, IT, HoReCa, ТОПСервис">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <meta property="og:title" content="Заголовок страницы в OG">
     <meta property="og:description" content="Описание страницы в OG">
     <meta property="og:image" content="https://example.com/image.jpg">

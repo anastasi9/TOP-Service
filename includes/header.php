@@ -1,5 +1,5 @@
 <header>
-    <h1>ТОП-Сервис</h1>
+    <h1>ТОП Сервис</h1>
     <link rel="stylesheet" href="css/style.css">
     <p>Автоматизация ресторанного бизнеса</p>
     
@@ -10,7 +10,9 @@
             <li><a href="about.php">О нас</a></li>
             <li><a href="contact.php">Контакты</a></li>
             
-            
+            <li class="nav-item">
+                <a class="nav-link" href="/pages/tickets.php">Заявки</a>
+            </li>
             
             <?php if (isset($_SESSION['user'])): ?>
                 <!-- Админские/модераторские ссылки -->
