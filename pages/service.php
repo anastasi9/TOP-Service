@@ -3,6 +3,59 @@ require_once '../includes/header.php';
 ?>
 
 <main class="service-page">
+<main>
+    <!-- Дополнительная микроразметка для страницы услуг -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "IT обслуживание ресторанов",
+      "provider": {
+        "@type": "Organization",
+        "name": "ТОП Сервис"
+      },
+      "description": "Профессиональное сервисное обслуживание для ресторанов и HoReCa",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Пакеты обслуживания",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Информационное обслуживание",
+              "description": "Удаленный мониторинг и поддержка IT систем",
+              "price": "32000",
+              "priceCurrency": "RUB"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Техническое обслуживание",
+              "description": "Комплексное IT обслуживание оборудования",
+              "price": "45000",
+              "priceCurrency": "RUB"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Комплексное обслуживание",
+              "description": "Полный пакет услуг по IT поддержке",
+              "price": "75000",
+              "priceCurrency": "RUB"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+
+    <article>
+        <!-- остальное содержимое страницы -->
     <!-- Герой-секция с параллакс-эффектом -->
     <section class="service-hero parallax">
         <div class="overlay"></div>

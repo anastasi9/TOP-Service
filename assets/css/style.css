@@ -1,4 +1,198 @@
-/* Основные стили страницы */
+/* Общие стили шапки */
+header {
+  background-color: #533b77;
+  color: white;
+  padding: 15px 0;
+  font-family: 'Arial', sans-serif;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.branding h1 {
+  margin: 0;
+  font-size: 28px;
+  color: #fff;
+}
+
+.branding p {
+  margin: 5px 0 0;
+  font-size: 14px;
+  color: #ecf0f1;
+}
+
+/* Стили для кнопок в правом углу */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.phone-link {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.callback-btn, .request-btn {
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.3s;
+}
+
+.callback-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+}
+
+.callback-btn:hover {
+  background-color: #c0392b;
+}
+
+.request-btn {
+  background-color: #2ecc71;
+  color: white;
+  text-decoration: none;
+}
+
+.request-btn:hover {
+  background-color: #27ae60;
+}
+
+/* Стили навигационного меню */
+.main-nav {
+  margin-top: 10px;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  display: block;
+  font-size: 15px;
+  transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+/* Стили для иконок */
+.nav-link i {
+  margin-right: 5px;
+  width: 16px;
+  text-align: center;
+}
+
+/* Специальные стили для разных типов пользователей */
+.admin-link {
+  color: #f39c12 !important;
+}
+
+.moderator-link {
+  color: #9b59b6 !important;
+}
+
+.user-link {
+  color: #3498db !important;
+}
+
+.login-link {
+  color: #2ecc71 !important;
+}
+
+.register-link {
+  color: #1abc9c !important;
+}
+
+.logout-link {
+  color: #b93ce7 !important;
+}
+
+/* Адаптивность */
+@media (max-width: 992px) {
+  .header-top {
+      flex-direction: column;
+      text-align: center;
+      gap: 15px;
+  }
+  
+  .header-actions {
+      justify-content: center;
+      width: 100%;
+  }
+  
+  .nav-list {
+      justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-list {
+      flex-direction: column;
+      align-items: center;
+      display: none;
+  }
+  
+  .nav-list.active {
+      display: flex;
+  }
+  
+  .nav-item {
+      width: 100%;
+      text-align: center;
+  }
+  
+  .nav-link {
+      padding: 10px;
+  }
+  
+  /* Добавьте кнопку "бургер" для мобильных */
+  .menu-toggle {
+      display: block;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      margin: 10px auto;
+  }
+}
 .service-page {
   color: #333;
   line-height: 1.6;
@@ -371,5 +565,217 @@
   
   .tab-nav {
       flex-direction: column;
+  }
+}
+/* Страница автоматизации */
+.automation-page {
+  padding-top: 80px;
+}
+
+.automation-hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/img/automation/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 100px 0;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+.hero-features {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 3rem auto;
+  max-width: 900px;
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  width: 180px;
+}
+
+.feature-item svg {
+  width: 50px;
+  height: 50px;
+  fill: #fff;
+}
+
+/* Решения */
+.solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.solution-card {
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.solution-card:hover {
+  transform: translateY(-5px);
+}
+
+.solution-card.highlighted {
+  border: 2px solid #3498db;
+}
+
+.solution-badge {
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  background: #3498db;
+  color: white;
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.solution-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.solution-header h3 {
+  font-size: 1.4rem;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.price-tag {
+  background: #f8f9fa;
+  padding: 0.3rem 0.8rem;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #3498db;
+}
+
+.solution-features {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.solution-features li {
+  padding: 0.5rem 0;
+  position: relative;
+  padding-left: 1.8rem;
+}
+
+.solution-features li:before {
+  content: "✓";
+  color: #2ecc71;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.solution-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* Форма заказа */
+.order-section {
+  background: #f8f9fa;
+  padding: 5rem 0;
+}
+
+.order-form-container {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.form-title {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+}
+
+.automation-form .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.automation-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.automation-form input,
+.automation-form select,
+.automation-form textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.automation-form textarea {
+  min-height: 120px;
+}
+
+.submit-btn {
+  background: linear-gradient(to right, #3498db, #2ecc71);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: opacity 0.3s;
+}
+
+.submit-btn:hover {
+  opacity: 0.9;
+}
+
+.form-notice {
+  font-size: 0.8rem;
+  color: #7f8c8d;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+      font-size: 2rem;
+  }
+  
+  .hero-features {
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+  }
+  
+  .feature-item {
+      width: 100%;
   }
 }

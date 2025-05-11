@@ -24,31 +24,47 @@ require_once 'includes/auth.php';  // Сессия запускается зде
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Service",
-      "serviceType": "IT обслуживание",
-      "provider": {
-        "@type": "Organization",
-        "name": "ТОП Сервис"
+      "@type": "Organization",
+      "name": "ТОП Сервис",
+      "url": "https://<?php echo $_SERVER['HTTP_HOST']; ?>",
+      "logo": "https://<?php echo $_SERVER['HTTP_HOST']; ?>/img/logo.png",
+      "description": "Автоматизация ресторанного бизнеса и IT обслуживание",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ул. Примерная, 123",
+        "addressLocality": "Москва",
+        "postalCode": "123456",
+        "addressCountry": "RU"
       },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Пакеты обслуживания",
-        "itemListElement": [
-          {
-            "@type": "OfferCatalog",
-            "name": "Информационное обслуживание",
-            "itemListElement": {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Информационное обслуживание"
-              }
-            }
-          }
-        ]
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+7-XXX-XXX-XX-XX",
+        "contactType": "customer service",
+        "email": "info@topservice.ru",
+        "availableLanguage": ["Russian"]
+      },
+      "sameAs": [
+        "https://vk.com/topservice",
+        "https://facebook.com/topservice"
+      ]
+    }
+    </script>
+
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "ТОП Сервис",
+      "url": "https://<?php echo $_SERVER['HTTP_HOST']; ?>",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://<?php echo $_SERVER['HTTP_HOST']; ?>/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
       }
     }
     </script>
+ 
 </head>
 
 <body>
