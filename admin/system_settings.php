@@ -41,8 +41,8 @@ try {
 }
 
 // Установите значения по умолчанию, если их нет в БД
-$site_title = $settings['site_title'] ?? 'ТОП-Сервис';
-$admin_email = $settings['admin_email'] ?? 'admin@example.com';
+$site_title = $settings['site_title'] ?? 'ТОП Сервис';
+$admin_email = $settings['admin_email'] ?? 'anastasiarezepina@outlook.com';
 $items_per_page = $settings['items_per_page'] ?? 10;
 ?>
 

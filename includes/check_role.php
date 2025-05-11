@@ -53,4 +53,39 @@ function can_view_portfolio() {
 function can_edit_portfolio() {
     return is_admin() || is_moderator();
 }
+
+function check_role($required_role) {
+    if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== $required_role) {
+        header('HTTP/1.0 403 Forbidden');
+        die('Доступ запрещен');
+    }
+}
+
+
+function checkRole($requiredRole) {
+    if (!isset($_SESSION['user_id'])) {
+        header('Location: /login.php');
+        exit;
+    }
+    
+    global $pdo;
+    
+    // Проверяем, не забанен ли пользователь
+    $stmt = $pdo->prepare("SELECT is_banned FROM users WHERE id = ?");
+    $stmt->execute([$_SESSION['user_id']]);
+    $user = $stmt->fetch();
+    
+    if ($user['is_banned'] == 1) {
+        session_destroy();
+        header('Location: /login.php?banned=1');
+        exit;
+    }
+    
+    // Проверяем роль
+    if ($_SESSION['user_role'] !== $requiredRole) {
+        header('HTTP/1.0 403 Forbidden');
+        die('Доступ запрещен. Недостаточно прав.');
+    }
+}
 ?>
+

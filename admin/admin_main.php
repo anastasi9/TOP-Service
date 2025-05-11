@@ -2,6 +2,7 @@
 <?php
 require '../includes/auth.php';
 require '../includes/check_role.php';
+require '../includes/functions.php';
 
 if ($current_user['role'] !== 'admin') {
     header("Location: ../login.php?error=no_access");
@@ -13,7 +14,7 @@ if ($current_user['role'] !== 'admin') {
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Панель администратора | ТОП-Сервис</title>
+    <title>Панель администратора | ТОП Сервис</title>
     <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
 <body>
@@ -54,9 +55,4 @@ if ($current_user['role'] !== 'admin') {
 </body>
 </html>
 
-<?php
-require '../includes/check_role.php';
-check_permission('admin');
 
-// Остальной код админки
-?>

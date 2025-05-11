@@ -1,83 +1,375 @@
-body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  background-color: #533b77;
-  color: #ffffff; /* Белый текст для контраста */
+/* Основные стили страницы */
+.service-page {
+  color: #333;
   line-height: 1.6;
 }
 
-/* Шапка */
-header {
-  background-color: rgba(0, 0, 0, 0.2); /* Полупрозрачный черный */
-  padding: 20px 0;
-  backdrop-filter: blur(5px); /* Размытие фона */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-h1 {
-  color: #ffffff;
+/* Герой-секция */
+.service-hero {
+  position: relative;
+  height: 80vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  max-width: 800px;
+  margin: 0 auto;
   text-align: center;
-  margin-bottom: 10px;
+}
+
+.service-hero h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* Навигация */
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+.subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
 }
 
-nav a {
+.highlight-box {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 2rem auto;
+  max-width: 600px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cta-button {
+  display: inline-block;
+  background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 600;
   text-decoration: none;
-  color: #ffffff;
-  font-weight: 500;
-  padding: 5px 10px;
-  border-radius: 4px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+      opacity: 0;
+      transform: translateY(30px);
+  }
+  to { 
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+/* Секция с тарифами */
+.plans-section {
+  padding: 5rem 0;
+  background: #f9fafc;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  color: #7f8c8d;
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.plans-tabs {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.tab-nav {
+  display: flex;
+  border-bottom: 1px solid #eee;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 1.5rem;
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #7f8c8d;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.tab-btn.active {
+  color: #3498db;
+}
+
+.tab-btn.active:after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #3498db, #2ecc71);
+}
+
+.plan-card {
+  padding: 2.5rem;
+}
+
+.plan-header {
+  margin-bottom: 2rem;
+}
+
+.plan-header h3 {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.tech-note {
+  color: #3498db;
+  font-style: italic;
+}
+
+.plan-details {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.details-col {
+  flex: 1;
+}
+
+.feature-list li, .included-list li {
+  padding: 0.5rem 0;
+  position: relative;
+  padding-left: 1.8rem;
+}
+
+.feature-list li:before {
+  content: '✓';
+  color: #2ecc71;
+  position: absolute;
+  left: 0;
+}
+
+.included-list li:before {
+  content: '•';
+  color: #3498db;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.plan-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.plan-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.order-btn, .consult-btn {
+  padding: 0.8rem 1.8rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
   transition: all 0.3s ease;
 }
 
-nav a:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
+.order-btn {
+  background: linear-gradient(135deg, #3498db, #2ecc71);
+  color: white;
+  border: none;
 }
 
-/* Основной контент */
-main {
-  max-width: 1200px;
-  margin: 30px auto;
-  padding: 20px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.consult-btn {
+  background: white;
+  color: #3498db;
+  border: 2px solid #3498db;
 }
 
-/* Подвал */
-footer {
+/* Форма заявки */
+.order-section {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.form-container {
+  background: white;
+  border-radius: 12px;
+  padding: 3rem;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.form-header {
+  margin-bottom: 2rem;
   text-align: center;
-  padding: 20px;
-  background-color: rgba(0, 0, 0, 0.3);
-  margin-top: auto;
 }
 
-.registration-form {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 20px;
-  background: #f9f9f9;
-  border-radius: 5px;
+.form-header h2 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
 }
 
-.invalid-feedback {
-  color: #dc3545;
+.form-row {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  flex: 1;
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
   display: block;
-  margin-top: 5px;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #2c3e50;
 }
 
-.is-invalid {
-  border-color: #dc3545;
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  outline: none;
+}
+
+.submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+}
+
+.form-note {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #7f8c8d;
+}
+
+/* Адаптивность */
+@media (max-width: 992px) {
+  .service-hero h1 {
+      font-size: 2.8rem;
+  }
+  
+  .plan-details {
+      flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .service-hero {
+      height: auto;
+      padding: 6rem 0;
+  }
+  
+  .form-row {
+      flex-direction: column;
+      gap: 0;
+  }
+  
+  .tab-nav {
+      flex-direction: column;
+  }
 }

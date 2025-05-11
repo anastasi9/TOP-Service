@@ -21,7 +21,34 @@ require_once 'includes/auth.php';  // Сессия запускается зде
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
 
-    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "IT обслуживание",
+      "provider": {
+        "@type": "Organization",
+        "name": "ТОП Сервис"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Пакеты обслуживания",
+        "itemListElement": [
+          {
+            "@type": "OfferCatalog",
+            "name": "Информационное обслуживание",
+            "itemListElement": {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Информационное обслуживание"
+              }
+            }
+          }
+        ]
+      }
+    }
+    </script>
 </head>
 
 <body>
@@ -40,7 +67,52 @@ require_once 'includes/auth.php';  // Сессия запускается зде
             </section>
             <section>
                 <h2>Вторая секция</h2>
-                <p>Наши услуги</p>
+                <p></p>
+                <section class="services">
+                <section class="catalog-preview">
+                <h2>Каталог товаров</h2>
+                <p>Наша компания предоставляет готовые решения.</p>
+                <a href="#" class="cta-button">Перейти в каталог</a>
+                </section>
+        <section class="services">
+        <h2>Наши услуги</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <h3>Автоматизация для всей HoReCa</h3>
+                <p>Кассовая автоматизация — Системы учета — Автоматизация под ключ</p>
+                <a href="#" class="more-link">Подробнее</a>
+            </div>
+            <div class="service-card">
+                <h3>Сервисное обслуживание</h3>
+                <p>Описание услуги и преимущества</p>
+                <a href="#" class="more-link">Подробнее</a>
+            </div>
+            <div class="service-card">
+                <h3>Обучение персонала</h3>
+                <p>Rkeeper – StoreHouse – Видеоуроки</p>
+                <a href="#" class="more-link">Подробнее</a>
+            </div>
+        </div>
+        
+    </section>
+        <div class="service-grid">
+            <div class="service-card">
+                <h3>Автоматизация для всей HoReCa</h3>
+                <p>Кассовая автоматизация — Системы учета — Автоматизация под ключ</p>
+                <a href="#" class="more-link">Подробнее</a>
+            </div>
+            <div class="service-card">
+                <h3>Сервисное обслуживание</h3>
+                <p>Описание услуги и преимущества</p>
+                <a href="#" class="more-link">Подробнее</a>
+            </div>
+            <div class="service-card">
+                <h3>Обучение персонала</h3>
+                <p>Rkeeper – StoreHouse – Видеоуроки</p>
+                <a href="#" class="more-link">Подробнее</a>
+            </div>
+        </div>
+    </section>
             </section>
             <section>
                 <h2>И третья</h2>
@@ -55,4 +127,9 @@ require_once 'includes/auth.php';  // Сессия запускается зде
     <script src="scripts/app.js" defer></script>
 </body>
 </html>
+
+
+
+
+
 

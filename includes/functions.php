@@ -93,3 +93,33 @@ function verify_csrf_token($token) {
 require_once 'includes/functions.php';
 die("Файл functions.php успешно подключен!");
 
+// includes/functions.php
+function get_user_count() {
+    global $pdo; 
+    
+    $stmt = $pdo->query("SELECT COUNT(*) FROM users");
+    return $stmt->fetchColumn();
+}
+function send_service_request_email($to_email, $name, $service_type) {
+    $subject = "Ваша заявка на сервисное обслуживание принята";
+    
+    $message = "
+    <html>
+    <head>
+        <title>Подтверждение заявки</title>
+    </head>
+    <body>
+        <h2>Уважаемый(ая) $name,</h2>
+        <p>Благодарим вас за заявку на сервисное обслуживание ($service_type).</p>
+        <p>Наш менеджер свяжется с вами в ближайшее время для уточнения деталей.</p>
+        <p>С уважением,<br>Команда ТОП Сервис</p>
+    </body>
+    </html>
+    ";
+    
+    $headers = "MIME-Version: 1.0\r\n";
+    $headers .= "Content-type: text/html; charset=utf-8\r\n";
+    $headers .= "From: no-reply@topservice.ru\r\n";
+    
+    return mail($to_email, $subject, $message, $headers);
+}
