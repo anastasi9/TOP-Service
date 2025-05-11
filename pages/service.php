@@ -1,10 +1,11 @@
 <?php
+$bodyClass = 'service-page';
+$pageTitle = 'Сервисное обслуживание';
 require_once '../includes/header.php';
 ?>
-
+<link rel="stylesheet" href="assets/css/style.css?v=<?= time() ?>">
 <main class="service-page">
-<main>
-    <!-- Дополнительная микроразметка для страницы услуг -->
+    <!-- Микроразметка -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -13,240 +14,141 @@ require_once '../includes/header.php';
       "provider": {
         "@type": "Organization",
         "name": "ТОП Сервис"
-      },
-      "description": "Профессиональное сервисное обслуживание для ресторанов и HoReCa",
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Пакеты обслуживания",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Информационное обслуживание",
-              "description": "Удаленный мониторинг и поддержка IT систем",
-              "price": "32000",
-              "priceCurrency": "RUB"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Техническое обслуживание",
-              "description": "Комплексное IT обслуживание оборудования",
-              "price": "45000",
-              "priceCurrency": "RUB"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Комплексное обслуживание",
-              "description": "Полный пакет услуг по IT поддержке",
-              "price": "75000",
-              "priceCurrency": "RUB"
-            }
-          }
-        ]
       }
     }
     </script>
 
-    <article>
-        <!-- остальное содержимое страницы -->
-    <!-- Герой-секция с параллакс-эффектом -->
-    <section class="service-hero parallax">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="animate-fade-in">Сервисное обслуживание</h1>
-                <p class="subtitle animate-slide-up">Профессиональная поддержка вашего бизнеса 24/7</p>
-                <div class="highlight-box animate-slide-up">
-                    <p>Техническая поддержка • Проактивный мониторинг • Гарантированное время реакции</p>
-                </div>
-                <a href="#order" class="cta-button pulse">Оставить заявку</a>
+    <!-- Герой-секция -->
+    <section class="service-hero">
+        <div class="hero-content">
+            <h1>Сервисное обслуживание</h1>
+            <p class="subtitle">Профессиональная поддержка вашего бизнеса 24/7</p>
+            <div class="highlight-box">
+                <p>Техническая поддержка • Проактивный мониторинг • Гарантированное время реакции</p>
             </div>
+            <a href="#order" class="cta-button">Оставить заявку</a>
         </div>
     </section>
 
     <!-- Преимущества -->
-    <section class="benefits-section">
+    <section class="service-section">
         <div class="container">
             <div class="section-header">
                 <h2>Почему выбирают наше обслуживание</h2>
-                <p class="section-subtitle">Мы обеспечиваем максимальную надежность ваших систем</p>
+                <p>Мы обеспечиваем максимальную надежность ваших систем</p>
             </div>
             
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <svg><!-- Иконка часов --></svg>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <h3>24/7 Поддержка</h3>
+                        <p>Круглосуточная техническая поддержка без выходных и праздников</p>
                     </div>
-                    <h3>24/7 Поддержка</h3>
-                    <p>Круглосуточная техническая поддержка без выходных и праздников</p>
                 </div>
                 
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <svg><!-- Иконка гарантии --></svg>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <h3>Гарантия SLA</h3>
+                        <p>Строгое соблюдение соглашений об уровне сервиса</p>
                     </div>
-                    <h3>Гарантия SLA</h3>
-                    <p>Строгое соблюдение соглашений об уровне сервиса</p>
                 </div>
                 
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <svg><!-- Иконка специалистов --></svg>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <h3>Эксперты</h3>
+                        <p>Сертифицированные специалисты с опытом от 5 лет</p>
                     </div>
-                    <h3>Эксперты</h3>
-                    <p>Сертифицированные специалисты с опытом от 5 лет</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Тарифы -->
-    <section class="plans-section">
+    <section class="service-section">
         <div class="container">
             <div class="section-header">
                 <h2>Пакеты обслуживания</h2>
-                <p class="section-subtitle">Выберите оптимальное решение для вашего бизнеса</p>
+                <p>Выберите оптимальное решение для вашего бизнеса</p>
             </div>
             
-            <div class="plans-tabs">
-                <div class="tab-nav">
-                    <button class="tab-btn active" data-tab="info">Информационное</button>
-                    <button class="tab-btn" data-tab="tech">Техническое</button>
-                    <button class="tab-btn" data-tab="complex">Комплексное</button>
-                </div>
-                
-                <div class="tab-content active" id="info">
+            <div class="row">
+                <div class="col-md-4">
                     <div class="plan-card">
-                        <div class="plan-header">
-                            <h3>Информационное обслуживание</h3>
-                            <p class="tech-note">Технология: Эксперт удаления</p>
-                        </div>
-                        
-                        <div class="plan-details">
-                            <div class="details-col">
-                                <h4>Преимущества:</h4>
-                                <ul class="feature-list">
-                                    <li>Удаленный мониторинг систем</li>
-                                    <li>Консультационная поддержка</li>
-                                    <li>Регулярные отчеты</li>
-                                    <li>Рекомендации по оптимизации</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="details-col">
-                                <h4>Что входит:</h4>
-                                <ul class="included-list">
-                                    <li>Круглосуточная поддержка</li>
-                                    <li>Реагирование в течение 2 часов</li>
-                                    <li>10 удаленных подключений в месяц</li>
-                                    <li>Ежемесячный аудит</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <div class="plan-footer">
-                            <div class="price">от 32 000 ₽/мес</div>
-                            <div class="plan-actions">
-                                <a href="#order" class="order-btn" data-plan="Информационное">Заказать</a>
-                                <a href="#consult" class="consult-btn">Консультация</a>
-                            </div>
-                        </div>
+                        <h3>Информационное</h3>
+                        <ul>
+                            <li>Удаленный мониторинг</li>
+                            <li>Консультации</li>
+                            <li>Отчеты</li>
+                        </ul>
+                        <div class="plan-price">от 32 000 ₽/мес</div>
+                        <a href="#order" class="service-btn btn-primary">Заказать</a>
                     </div>
                 </div>
                 
-                <!-- Аналогичные блоки для других тарифов -->
+                <div class="col-md-4">
+                    <div class="plan-card">
+                        <h3>Техническое</h3>
+                        <ul>
+                            <li>Выезд специалиста</li>
+                            <li>Ремонт оборудования</li>
+                            <li>Профилактика</li>
+                        </ul>
+                        <div class="plan-price">от 45 000 ₽/мес</div>
+                        <a href="#order" class="service-btn btn-primary">Заказать</a>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="plan-card">
+                        <h3>Комплексное</h3>
+                        <ul>
+                            <li>Полный спектр услуг</li>
+                            <li>Персональный менеджер</li>
+                            <li>Гарантия 24/7</li>
+                        </ul>
+                        <div class="plan-price">от 75 000 ₽/мес</div>
+                        <a href="#order" class="service-btn btn-primary">Заказать</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Форма заявки -->
-    <section id="order" class="order-section">
+    <section id="order" class="service-section">
         <div class="container">
-            <div class="form-container">
-                <div class="form-header">
-                    <h2>Оставить заявку</h2>
-                    <p>Заполните форму и наш менеджер свяжется с вами в течение 15 минут</p>
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <div class="service-form-container">
+                        <div class="section-header">
+                            <h2>Оставить заявку</h2>
+                            <p>Заполните форму и наш менеджер свяжется с вами</p>
+                        </div>
+                        
+                        <form class="service-form">
+                            <div class="form-group">
+                                <label>Ваше имя</label>
+                                <input type="text" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Телефон</label>
+                                <input type="tel" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Тип обслуживания</label>
+                                <select>
+                                    <option>Информационное</option>
+                                    <option>Техническое</option>
+                                    <option>Комплексное</option>
+                                </select>
+                            </div>
+                            
+                            <button type="submit" class="service-btn btn-primary">Отправить заявку</button>
+                        </form>
+                    </div>
                 </div>
-                
-                <form class="order-form" id="service-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="service-type">Тип обслуживания*</label>
-                            <select id="service-type" name="service_type" required>
-                                <option value="" disabled selected>Выберите тип</option>
-                                <option value="information">Информационное</option>
-                                <option value="technical">Техническое</option>
-                                <option value="complex">Комплексное</option>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">Ваше имя*</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Телефон*</label>
-                            <input type="tel" id="phone" name="phone" required>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Дополнительная информация</label>
-                        <textarea id="message" name="message" rows="4"></textarea>
-                    </div>
-                    
-                    <div class="form-footer">
-                        <button type="submit" class="submit-btn">
-                            <span>Отправить заявку</span>
-                            <svg><!-- Иконка стрелки --></svg>
-                        </button>
-                        <p class="form-note">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности</p>
-                    </div>
-                </form>
-            </div>
-            
-            <div class="form-image">
-                <img src="/img/service-form-image.jpg" alt="Сервисное обслуживание">
-            </div>
-        </div>
-    </section>
-
-    <!-- Отзывы -->
-    <section class="testimonials-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Отзывы клиентов</h2>
-                <p class="section-subtitle">Что говорят о нашем сервисе</p>
-            </div>
-            
-            <div class="testimonials-slider">
-                <!-- Слайды с отзывами -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Клиенты -->
-    <section class="clients-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Нам доверяют</h2>
-                <p class="section-subtitle">Более 200 компаний по всей России</p>
-            </div>
-            
-            <div class="clients-slider">
-                <div class="client-logo">
-                    <img src="/img/clients/client1.svg" alt="Логотип клиента">
-                </div>
-                <!-- Остальные логотипы -->
             </div>
         </div>
     </section>

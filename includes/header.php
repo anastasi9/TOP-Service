@@ -1,23 +1,43 @@
-<header>
-    <div class="header-top">
-        <h1>ТОП Сервис</h1>
-        <p>Автоматизация ресторанного бизнеса</p>
-    </div>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="stylesheet" href="assets/css/style.css?v=1.0">
-    <div class="header-actions">
-                <a href="tel:+79999999999" class="phone-link">
-                    <i class="fas fa-phone"></i> +7 (999) 999-99-99
-                </a>
-                <button class="callback-btn">
-                    <i class="fas fa-phone-volume"></i> Заказать звонок
-                </button>
-                <a href="#request-form" class="request-btn">
-                    <i class="fas fa-paper-plane"></i> Оставить заявку
-                </a>
-    </div>
-    <!-- Основная навигация -->
-    <nav class="main-nav">
+    <title>ТОП Сервис - Автоматизация ресторанного бизнеса</title>
+    
+    <!-- Подключение стилей -->
+    <link rel="stylesheet" href="assets/css/style.css?v=<?= time() ?>">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="header-top">
+                <div class="branding">
+                    <h1>ТОП Сервис</h1>
+                    <p>Автоматизация ресторанного бизнеса</p>
+                </div>
+                
+                <div class="header-actions">
+                    <a href="tel:+79999999999" class="phone-link">
+                        <i class="fas fa-phone"></i> +7 (999) 999-99-99
+                    </a>
+                    <button class="callback-btn">
+                        <i class="fas fa-phone-volume"></i> Заказать звонок
+                    </button>
+                    <a href="#request-form" class="request-btn">
+                        <i class="fas fa-paper-plane"></i> Оставить заявку
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Основная навигация -->
+            <nav class="main-nav">
         <ul class="nav-list">
             <li class="nav-item"><a href="index.php" class="nav-link">Главная</a></li>
             <li class="nav-item"><a href="/pages/automation.php" class="nav-link">Автоматизация</a></li>
@@ -72,3 +92,5 @@
     </nav>
 </header>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+

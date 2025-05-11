@@ -1,10 +1,182 @@
+/* Основные стили */
+body.service-page {
+  background-color: #533b77;
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+}
+
+/* Герой-секция */
+.service-hero {
+  background: linear-gradient(rgba(83, 59, 119, 0.9), rgba(0, 0, 0, 0.7)), url('../images/service-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 120px 0;
+  text-align: center;
+  position: relative;
+}
+
+.service-hero .hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.service-hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.highlight-box {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 2rem auto;
+  max-width: 600px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cta-button {
+  background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 1rem;
+  transition: all 0.3s;
+}
+
+/* Секции */
+.service-section {
+  padding: 80px 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Карточки */
+.service-card {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  padding: 30px;
+  margin-bottom: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Тарифы */
+.plan-card {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  padding: 30px;
+  margin-bottom: 20px;
+}
+
+.plan-price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* Форма */
+.service-form-container {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  padding: 40px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  color: #ffffff;
+}
+
+/* Кнопки */
+.service-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #3498db, #2ecc71);
+  color: white;
+}
+
+.btn-outline {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .service-hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .service-section {
+    padding: 60px 0;
+  }
+  
+  .highlight-box {
+    padding: 1rem;
+  }
+}
+
+/* Глобальные стили для всех страниц */
+body {
+  background-color: #533b77;
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
 /* Общие стили шапки */
 header {
   background-color: #533b77;
   color: white;
   padding: 15px 0;
-  font-family: 'Arial', sans-serif;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1000;
 }
 
 .header-container {
@@ -144,58 +316,11 @@ header {
   color: #b93ce7 !important;
 }
 
-/* Адаптивность */
-@media (max-width: 992px) {
-  .header-top {
-      flex-direction: column;
-      text-align: center;
-      gap: 15px;
-  }
-  
-  .header-actions {
-      justify-content: center;
-      width: 100%;
-  }
-  
-  .nav-list {
-      justify-content: center;
-  }
-}
-
-@media (max-width: 768px) {
-  .nav-list {
-      flex-direction: column;
-      align-items: center;
-      display: none;
-  }
-  
-  .nav-list.active {
-      display: flex;
-  }
-  
-  .nav-item {
-      width: 100%;
-      text-align: center;
-  }
-  
-  .nav-link {
-      padding: 10px;
-  }
-  
-  /* Добавьте кнопку "бургер" для мобильных */
-  .menu-toggle {
-      display: block;
-      background: none;
-      border: none;
-      color: white;
-      font-size: 24px;
-      cursor: pointer;
-      margin: 10px auto;
-  }
-}
-.service-page {
-  color: #333;
-  line-height: 1.6;
+/* Основной контент */
+.main-content {
+  background-color: #533b77;
+  color: #ffffff;
+  padding: 40px 0;
 }
 
 .container {
@@ -276,35 +401,10 @@ header {
   box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
 }
 
-/* Анимации */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideUp {
-  from { 
-      opacity: 0;
-      transform: translateY(30px);
-  }
-  to { 
-      opacity: 1;
-      transform: translateY(0);
-  }
-}
-
-.animate-fade-in {
-  animation: fadeIn 1s ease-out forwards;
-}
-
-.animate-slide-up {
-  animation: slideUp 0.8s ease-out forwards;
-}
-
 /* Секция с тарифами */
 .plans-section {
   padding: 5rem 0;
-  background: #f9fafc;
+  background-color: rgba(83, 59, 119, 0.9);
 }
 
 .section-header {
@@ -314,27 +414,27 @@ header {
 
 .section-header h2 {
   font-size: 2.5rem;
-  color: #2c3e50;
+  color: #ffffff;
   margin-bottom: 1rem;
 }
 
 .section-subtitle {
-  color: #7f8c8d;
+  color: rgba(255, 255, 255, 0.8);
   font-size: 1.2rem;
   max-width: 700px;
   margin: 0 auto;
 }
 
 .plans-tabs {
-  background: white;
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .tab-nav {
   display: flex;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .tab-btn {
@@ -344,14 +444,14 @@ header {
   border: none;
   font-size: 1.1rem;
   font-weight: 600;
-  color: #7f8c8d;
+  color: rgba(255, 255, 255, 0.7);
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
 }
 
 .tab-btn.active {
-  color: #3498db;
+  color: #ffffff;
 }
 
 .tab-btn.active:after {
@@ -366,6 +466,7 @@ header {
 
 .plan-card {
   padding: 2.5rem;
+  color: #ffffff;
 }
 
 .plan-header {
@@ -374,7 +475,7 @@ header {
 
 .plan-header h3 {
   font-size: 1.8rem;
-  color: #2c3e50;
+  color: #ffffff;
   margin-bottom: 0.5rem;
 }
 
@@ -397,6 +498,7 @@ header {
   padding: 0.5rem 0;
   position: relative;
   padding-left: 1.8rem;
+  color: #ffffff;
 }
 
 .feature-list li:before {
@@ -419,13 +521,13 @@ header {
   justify-content: space-between;
   align-items: center;
   padding-top: 2rem;
-  border-top: 1px solid #eee;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .price {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #2c3e50;
+  color: #ffffff;
 }
 
 .plan-actions {
@@ -448,22 +550,24 @@ header {
 }
 
 .consult-btn {
-  background: white;
-  color: #3498db;
-  border: 2px solid #3498db;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 /* Форма заявки */
 .order-section {
   padding: 5rem 0;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: rgba(83, 59, 119, 0.95);
 }
 
 .form-container {
-  background: white;
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   padding: 3rem;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .form-header {
@@ -473,7 +577,7 @@ header {
 
 .form-header h2 {
   font-size: 2rem;
-  color: #2c3e50;
+  color: #ffffff;
   margin-bottom: 0.5rem;
 }
 
@@ -492,7 +596,7 @@ header {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: #ffffff;
 }
 
 .form-group input,
@@ -500,10 +604,12 @@ header {
 .form-group textarea {
   width: 100%;
   padding: 1rem;
-  border: 1px solid #ddd;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 8px;
   font-size: 1rem;
   transition: all 0.3s ease;
+  color: #ffffff;
 }
 
 .form-group input:focus,
@@ -512,6 +618,12 @@ header {
   border-color: #3498db;
   box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
   outline: none;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .submit-btn {
@@ -538,38 +650,13 @@ header {
   text-align: center;
   margin-top: 1rem;
   font-size: 0.9rem;
-  color: #7f8c8d;
+  color: rgba(255, 255, 255, 0.7);
 }
 
-/* Адаптивность */
-@media (max-width: 992px) {
-  .service-hero h1 {
-      font-size: 2.8rem;
-  }
-  
-  .plan-details {
-      flex-direction: column;
-  }
-}
-
-@media (max-width: 768px) {
-  .service-hero {
-      height: auto;
-      padding: 6rem 0;
-  }
-  
-  .form-row {
-      flex-direction: column;
-      gap: 0;
-  }
-  
-  .tab-nav {
-      flex-direction: column;
-  }
-}
 /* Страница автоматизации */
 .automation-page {
   padding-top: 80px;
+  background-color: #533b77;
 }
 
 .automation-hero {
@@ -602,6 +689,7 @@ header {
   align-items: center;
   gap: 0.8rem;
   width: 180px;
+  color: #ffffff;
 }
 
 .feature-item svg {
@@ -619,16 +707,19 @@ header {
 }
 
 .solution-card {
-  background: white;
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   padding: 2rem;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   position: relative;
   transition: transform 0.3s ease;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .solution-card:hover {
   transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .solution-card.highlighted {
@@ -653,17 +744,17 @@ header {
   align-items: center;
   margin-bottom: 1.5rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .solution-header h3 {
   font-size: 1.4rem;
-  color: #2c3e50;
+  color: #ffffff;
   margin: 0;
 }
 
 .price-tag {
-  background: #f8f9fa;
+  background: rgba(255, 255, 255, 0.1);
   padding: 0.3rem 0.8rem;
   border-radius: 5px;
   font-weight: bold;
@@ -680,6 +771,7 @@ header {
   padding: 0.5rem 0;
   position: relative;
   padding-left: 1.8rem;
+  color: #ffffff;
 }
 
 .solution-features li:before {
@@ -696,75 +788,138 @@ header {
   margin-top: 2rem;
 }
 
-/* Форма заказа */
-.order-section {
-  background: #f8f9fa;
-  padding: 5rem 0;
+/* Страница оборудования */
+.equipment-page {
+  padding-top: 80px;
+  background-color: #533b77;
+  color: #ffffff;
 }
 
-.order-form-container {
-  background: white;
-  padding: 2.5rem;
-  border-radius: 10px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-}
-
-.form-title {
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-  color: #2c3e50;
-}
-
-.automation-form .form-group {
-  margin-bottom: 1.5rem;
-}
-
-.automation-form label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  color: #2c3e50;
-}
-
-.automation-form input,
-.automation-form select,
-.automation-form textarea {
-  width: 100%;
-  padding: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 1rem;
-}
-
-.automation-form textarea {
-  min-height: 120px;
-}
-
-.submit-btn {
-  background: linear-gradient(to right, #3498db, #2ecc71);
+.equipment-hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../img/equipment/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
   color: white;
-  border: none;
-  padding: 1rem 2rem;
-  border-radius: 5px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  width: 100%;
-  transition: opacity 0.3s;
-}
-
-.submit-btn:hover {
-  opacity: 0.9;
-}
-
-.form-notice {
-  font-size: 0.8rem;
-  color: #7f8c8d;
-  margin-top: 1rem;
+  padding: 80px 0;
   text-align: center;
 }
 
+.equipment-hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.hero-description {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+}
+
+/* Категории оборудования */
+.equipment-categories {
+  padding: 60px 0;
+  background-color: rgba(83, 59, 119, 0.9);
+}
+
+.section-header h2 {
+  font-size: 2.2rem;
+  color: #ffffff;
+}
+
+.section-subtitle {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.category-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.category-header {
+  background: #3498db;
+  color: white;
+  padding: 20px;
+}
+
+.category-body {
+  color: #ffffff;
+}
+
+.features-list li {
+  color: #ffffff;
+}
+
+.category-description {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Преимущества */
+.equipment-benefits {
+  padding: 60px 0;
+  background-color: rgba(83, 59, 119, 0.95);
+}
+
+.benefit-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.benefit-card h3 {
+  color: #ffffff;
+}
+
+/* Форма запроса */
+.equipment-request {
+  background: linear-gradient(135deg, #3498db, #2ecc71);
+  color: white;
+  padding: 60px 0;
+}
+
+/* Адаптивность */
+@media (max-width: 992px) {
+  .service-hero h1 {
+      font-size: 2.8rem;
+  }
+  
+  .plan-details {
+      flex-direction: column;
+  }
+}
+
 @media (max-width: 768px) {
+  .service-hero {
+      height: auto;
+      padding: 6rem 0;
+  }
+  
+  .form-row {
+      flex-direction: column;
+      gap: 0;
+  }
+  
+  .tab-nav {
+      flex-direction: column;
+  }
+  
   .hero-title {
       font-size: 2rem;
   }
@@ -777,5 +932,17 @@ header {
   
   .feature-item {
       width: 100%;
+  }
+  
+  .categories-grid {
+      grid-template-columns: 1fr;
+  }
+  
+  .equipment-hero h1 {
+      font-size: 2rem;
+  }
+  
+  .hero-subtitle {
+      font-size: 1.2rem;
   }
 }
