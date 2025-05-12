@@ -39,14 +39,14 @@
             <!-- Основная навигация -->
             <nav class="main-nav">
         <ul class="nav-list">
-            <li class="nav-item"><a href="index.php" class="nav-link">Главная</a></li>
+            <li class="nav-item"><a href="../index.php" class="nav-link">Главная</a></li>
             <li class="nav-item"><a href="/pages/automation.php" class="nav-link">Автоматизация</a></li>
             <li class="nav-item"><a href="/pages/service.php" class="nav-link">Сервисное обслуживание</a></li>
             <li class="nav-item"><a href="/pages/education.php" class="nav-link">Обучение</a></li>
             <li class="nav-item"><a href="/pages/equipment.php" class="nav-link">Оборудование</a></li>
             <li class="nav-item"><a href="/pages/services.php" class="nav-link">Услуги</a></li>
             <li class="nav-item"><a href="about.php" class="nav-link">О нас</a></li>
-            <li class="nav-item"><a href="contact.php" class="nav-link">Контакты</a></li>
+            <li class="nav-item"><a href="/pages/contact.php" class="nav-link">Контакты</a></li>
             <li class="nav-item"><a href="/pages/tickets.php" class="nav-link">Заявки</a></li>
             
             <?php if (isset($_SESSION['user'])): ?>
