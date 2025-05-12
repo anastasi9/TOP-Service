@@ -1,13 +1,14 @@
 #панель админ
 <?php
+/* require '../includes/db_connect.php'; 
 require '../includes/auth.php';
 require '../includes/check_role.php';
-require '../includes/functions.php';
+require '../includes/functions.php'; */
 
-if ($current_user['role'] !== 'admin') {
+/* if ($current_user['role'] !== 'admin') {
     header("Location: ../login.php?error=no_access");
     exit;
-}
+} */
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +19,7 @@ if ($current_user['role'] !== 'admin') {
     <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
 <body>
-    <?php include '../includes/admin_header.php'; ?>
+    <?php include './includes/admin_header.php'; ?>
     
     <div class="admin-container">
         <h1>Административная панель</h1>
@@ -51,7 +52,7 @@ if ($current_user['role'] !== 'admin') {
         </div>
     </div>
 
-    <script src="../assets/js/admin.js"></script>
+    <!-- <script src="../assets/js/admin.js"></script> -->
 </body>
 </html>
 

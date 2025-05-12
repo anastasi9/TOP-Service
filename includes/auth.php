@@ -147,7 +147,7 @@ class Auth {
 }
 
 // Инициализация класса Auth
-Auth::init($db);
+Auth::init($dbname);
 
 // Обработка POST-запросов
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

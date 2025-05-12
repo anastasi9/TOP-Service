@@ -13,7 +13,7 @@ $current_user = $stmt->fetch(PDO::FETCH_ASSOC);
 // Если пользователь забанен (хотя это уже проверено в check_role)
 if ($current_user['is_banned'] == 1) {
     session_destroy();
-    header('Location: /login.php?banned=1');
+    /* header('Location: /login.php?banned=1'); */
     exit;
 }
 
