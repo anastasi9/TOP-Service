@@ -91,6 +91,41 @@
         </ul>
     </nav>
 </header>
+<nav class="breadcrumbs">
+    <div class="container">
+        <ul class="breadcrumb-list">
+            <li class="breadcrumb-item"><a href="/"><i class="fas fa-home"></i></a></li>
+            <?php 
+            // Динамическое отображение хлебных крошек
+            $uri = $_SERVER['REQUEST_URI'];
+            $path = parse_url($uri, PHP_URL_PATH);
+            $parts = explode('/', trim($path, '/'));
+            
+            $breadcrumbs = array();
+            $url = '';
+            
+            foreach ($parts as $part) {
+                if (!empty($part)) {
+                    $url .= '/' . $part;
+                    $name = ucfirst(str_replace(array('.php', '-', '_'), array('', ' ', ' '), $part));
+                    $breadcrumbs[] = array('url' => $url, 'name' => $name);
+                }
+            }
+            
+            foreach ($breadcrumbs as $index => $crumb) {
+                $is_last = ($index === count($breadcrumbs) - 1);
+                if ($is_last) {
+                    echo '<li class="breadcrumb-item active">' . $crumb['name'] . '</li>';
+                } else {
+                    echo '<li class="breadcrumb-item"><a href="' . $crumb['url'] . '">' . $crumb['name'] . '</a></li>';
+                    echo '<li class="breadcrumb-separator"><i class="fas fa-chevron-right"></i></li>';
+                }
+            }
+            ?>
+        </ul>
+    </div>
+</nav>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 
