@@ -1,48 +1,126 @@
 <?php
-// C:\Program Files\Ampps\www\includes\functions.php
+/**
+ * Основные функции системы
+ */
 
 /**
- * Проверяет, авторизован ли пользователь
+ * Устанавливает соединение с базой данных
+ */
+function get_db_connection() {
+    static $pdo = null;
+    
+    if ($pdo === null) {
+        try {
+            $pdo = new PDO(
+                'mysql:host=localhost;dbname=topservice_db;charset=utf8mb4',
+                'root',
+                'mysql',
+                [
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                    PDO::ATTR_EMULATE_PREPARES => false
+                ]
+            );
+        } catch (PDOException $e) {
+            error_log("DB Connection Error: " . $e->getMessage());
+            die("Ошибка подключения к базе данных");
+        }
+    }
+    
+    return $pdo;
+}
+
+/**
+ * Проверяет авторизацию пользователя
  */
 function is_logged_in() {
-    return isset($_SESSION['user']);
+    return isset($_SESSION['user_id']);
 }
 
 /**
- * Возвращает текущего пользователя
- */
-function current_user() {
-    return $_SESSION['user'] ?? null;
-}
-
-/**
- * Проверяет, имеет ли пользователь указанную роль
+ * Проверяет роль пользователя
  */
 function has_role($role) {
-    return is_logged_in() && $_SESSION['user']['role'] === $role;
+    if (!is_logged_in()) return false;
+    
+    $pdo = get_db_connection();
+    $stmt = $pdo->prepare("SELECT role FROM users WHERE id = ?");
+    $stmt->execute([$_SESSION['user_id']]);
+    $user = $stmt->fetch();
+    
+    return $user && $user['role'] === $role;
 }
 
 /**
- * Редирект с сообщением
+ * Перенаправление с сообщением
  */
 function redirect_with_message($url, $message, $type = 'success') {
-    $_SESSION['flash'][$type] = $message;
+    $_SESSION['flash_message'] = [
+        'text' => $message,
+        'type' => $type
+    ];
     header("Location: $url");
     exit;
 }
 
 /**
- * Хеширование пароля
+ * Получает количество пользователей
  */
-function hash_password($password) {
-    return password_hash($password, PASSWORD_DEFAULT);
+function get_user_count() {
+    $pdo = get_db_connection();
+    try {
+        return $pdo->query("SELECT COUNT(*) FROM users")->fetchColumn();
+    } catch (PDOException $e) {
+        error_log("User count error: " . $e->getMessage());
+        return 0;
+    }
 }
 
 /**
- * Валидация email
+ * Получает количество услуг
  */
-function is_valid_email($email) {
-    return filter_var($email, FILTER_VALIDATE_EMAIL);
+function get_service_count() {
+    $pdo = get_db_connection();
+    try {
+        return $pdo->query("SELECT COUNT(*) FROM services")->fetchColumn();
+    } catch (PDOException $e) {
+        error_log("Service count error: " . $e->getMessage());
+        return 0;
+    }
+}
+
+/**
+ * Получает активные заявки
+ */
+function get_active_requests() {
+    $pdo = get_db_connection();
+    try {
+        return $pdo->query("SELECT COUNT(*) FROM requests WHERE status = 'pending'")->fetchColumn();
+    } catch (PDOException $e) {
+        error_log("Requests count error: " . $e->getMessage());
+        return 0;
+    }
+}
+
+/**
+ * Получает последние действия
+ */
+function get_recent_activities($limit = 5) {
+    $pdo = get_db_connection();
+    try {
+        $stmt = $pdo->prepare("
+            SELECT l.*, u.username 
+            FROM logs l
+            JOIN users u ON l.user_id = u.id
+            ORDER BY l.created_at DESC
+            LIMIT ?
+        ");
+        $stmt->execute([$limit]);
+        return $stmt->fetchAll();
+    } catch (PDOException $e) {
+        error_log("Recent activities error: " . $e->getMessage());
+        return [];
+    }
 }
 
 /**
@@ -50,76 +128,4 @@ function is_valid_email($email) {
  */
 function e($string) {
     return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
-}
-
-/**
- * Получение настроек сайта
- */
-function get_settings($db) {
-    try {
-        $stmt = $db->query("SELECT setting_key, setting_value FROM settings");
-        return $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
-    } catch (PDOException $e) {
-        error_log("Settings error: " . $e->getMessage());
-        return [];
-    }
-}
-
-/**
- * Логирование действий
- */
-function log_action($db, $user_id, $action) {
-    $stmt = $db->prepare("INSERT INTO logs (user_id, action) VALUES (?, ?)");
-    $stmt->execute([$user_id, $action]);
-}
-
-/**
- * Генерация CSRF-токена
- */
-function generate_csrf_token() {
-    if (empty($_SESSION['csrf_token'])) {
-        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-    }
-    return $_SESSION['csrf_token'];
-}
-
-/**
- * Проверка CSRF-токена
- */
-function verify_csrf_token($token) {
-    return isset($_SESSION['csrf_token']) && hash_equals($_SESSION['csrf_token'], $token);
-}
-
-require_once 'includes/functions.php';
-die("Файл functions.php успешно подключен!");
-
-// includes/functions.php
-function get_user_count() {
-    global $pdo; 
-    
-    $stmt = $pdo->query("SELECT COUNT(*) FROM users");
-    return $stmt->fetchColumn();
-}
-function send_service_request_email($to_email, $name, $service_type) {
-    $subject = "Ваша заявка на сервисное обслуживание принята";
-    
-    $message = "
-    <html>
-    <head>
-        <title>Подтверждение заявки</title>
-    </head>
-    <body>
-        <h2>Уважаемый(ая) $name,</h2>
-        <p>Благодарим вас за заявку на сервисное обслуживание ($service_type).</p>
-        <p>Наш менеджер свяжется с вами в ближайшее время для уточнения деталей.</p>
-        <p>С уважением,<br>Команда ТОП Сервис</p>
-    </body>
-    </html>
-    ";
-    
-    $headers = "MIME-Version: 1.0\r\n";
-    $headers .= "Content-type: text/html; charset=utf-8\r\n";
-    $headers .= "From: no-reply@topservice.ru\r\n";
-    
-    return mail($to_email, $subject, $message, $headers);
 }
