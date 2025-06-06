@@ -32,7 +32,7 @@ $recent_activities = [
 <div class="admin-container">
     <!-- Sidebar -->
     <div class="sidebar">
-        <h2>Admin Panel</h2>
+        <h2>Админ панель</h2>
         <a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Главная</a>
         <a href="#"><i class="fas fa-users"></i> Пользователи</a>
         <a href="#"><i class="fas fa-concierge-bell"></i> Услуги</a>

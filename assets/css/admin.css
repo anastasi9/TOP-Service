@@ -199,3 +199,73 @@
             color: #999;
             margin-top: 1rem;
         }
+
+
+            .services-list {
+        margin-top: 2rem;
+    }
+
+    .service-category {
+        background: #f9f9f9; 
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .service-category h2 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .service-items {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .service-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .actions button {
+        margin-left: 10px;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .btn-edit {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .btn-delete {
+        background-color: #dc3545;
+        color: white;
+    }
+
+    .add-service-form {
+        margin-top: 1rem;
+        display: flex;
+        gap: 10px;
+    }
+
+    .add-service-form input {
+        flex: 1;
+        padding: 8px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+    }
+
+    .btn-add {
+        padding: 8px 15px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
