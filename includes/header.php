@@ -25,7 +25,7 @@
                 
                 <div class="header-actions">
                     <a href="tel:+79999999999" class="phone-link">
-                        <i class="fas fa-phone"></i> +7 (999) 999-99-99
+                        <i class="fas fa-phone"></i> +7 (919) 101-61-62
                     </a>
                     <button class="callback-btn">
                         <i class="fas fa-phone-volume"></i> Заказать звонок
@@ -41,13 +41,12 @@
         <ul class="nav-list">
             <li class="nav-item"><a href="../index.php" class="nav-link">Главная</a></li>
             <li class="nav-item"><a href="/pages/automation.php" class="nav-link">Автоматизация</a></li>
+            <li class="nav-item"><a href="/pages/audit.php" class="nav-link">Аудит</a></li>
             <li class="nav-item"><a href="/pages/service.php" class="nav-link">Сервисное обслуживание</a></li>
-            <li class="nav-item"><a href="/pages/education.php" class="nav-link">Обучение</a></li>
-            <li class="nav-item"><a href="/pages/equipment.php" class="nav-link">Оборудование</a></li>
             <li class="nav-item"><a href="/pages/services.php" class="nav-link">Услуги</a></li>
-            <li class="nav-item"><a href="about.php" class="nav-link">О нас</a></li>
+            <li class="nav-item"><a href="about.php" class="nav-link">О компании</a></li>
             <li class="nav-item"><a href="/pages/contact.php" class="nav-link">Контакты</a></li>
-            <li class="nav-item"><a href="/pages/tickets.php" class="nav-link">Заявки</a></li>
+
             
             <?php if (isset($_SESSION['user'])): ?>
                 <!-- Пользователь авторизован -->

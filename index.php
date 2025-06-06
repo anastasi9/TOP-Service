@@ -14,7 +14,8 @@ require_once 'includes/auth.php';  // Сессия запускается зде
     <meta property="og:description" content="Описание страницы в OG">
     <meta property="og:image" content="https://example.com/image.jpg">
     <meta property="og:url" content="https://example.com/">
-
+    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -31,7 +32,7 @@ require_once 'includes/auth.php';  // Сессия запускается зде
       "description": "Автоматизация ресторанного бизнеса и IT обслуживание",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "ул. Примерная, 123",
+        "streetAddress": "Земляной Вал, 64с2",
         "addressLocality": "Москва",
         "postalCode": "123456",
         "addressCountry": "RU"
@@ -69,29 +70,12 @@ require_once 'includes/auth.php';  // Сессия запускается зде
 
 <body>
     <?php 
-    
     include_once 'includes/header.php'; 
     ?>
 
     <main>
         <article>
-            <section>
-                <h2>Первая секция</h2>
-                <p>О компании</p>
-                <img src="images/image.png" alt="IT обслуживание ресторанов">
-                <p>Наши партнеры</p>
-            </section>
-            <section>
-                <h2>Вторая секция</h2>
-                <p></p>
-                <section class="services">
-                <section class="catalog-preview">
-                <h2>Каталог товаров</h2>
-                <p>Наша компания предоставляет готовые решения.</p>
-                <a href="#" class="cta-button">Перейти в каталог</a>
-                </section>
         <section class="services">
-        <h2>Наши услуги</h2>
         <div class="service-grid">
             <div class="service-card">
                 <h3>Автоматизация для всей HoReCa</h3>
@@ -101,11 +85,6 @@ require_once 'includes/auth.php';  // Сессия запускается зде
             <div class="service-card">
                 <h3>Сервисное обслуживание</h3>
                 <p>Описание услуги и преимущества</p>
-                <a href="#" class="more-link">Подробнее</a>
-            </div>
-            <div class="service-card">
-                <h3>Обучение персонала</h3>
-                <p>Rkeeper – StoreHouse – Видеоуроки</p>
                 <a href="#" class="more-link">Подробнее</a>
             </div>
         </div>
@@ -122,18 +101,9 @@ require_once 'includes/auth.php';  // Сессия запускается зде
                 <p>Описание услуги и преимущества</p>
                 <a href="#" class="more-link">Подробнее</a>
             </div>
-            <div class="service-card">
-                <h3>Обучение персонала</h3>
-                <p>Rkeeper – StoreHouse – Видеоуроки</p>
-                <a href="#" class="more-link">Подробнее</a>
-            </div>
         </div>
     </section>
-            </section>
-            <section>
-                <h2>И третья</h2>
-                <p>Контакты</p>
-            </section>
+
         </article>
     </main>
 

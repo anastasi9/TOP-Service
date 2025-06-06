@@ -25,208 +25,7 @@ $recent_activities = [
     <title>Административная панель</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <style>
-        /* === Общие стили === */
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family: 'Roboto', sans-serif;
-            background-color: #f4f4f9; 
-            color: #000000;
-        }
-
-        .admin-container {
-            display: flex;
-        }
-
-        .sidebar {
-            width: 250px;
-            background-color: #533b77;
-            color: white;
-            min-height: 100vh;
-            padding: 2rem 1rem;
-            position: fixed;
-        }
-
-        .sidebar h2 {
-            font-size: 20px;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .sidebar a {
-            display: block;
-            color: white;
-            padding: 10px 15px;
-            text-decoration: none;
-            margin-bottom: 10px;
-            border-radius: 6px;
-            transition: background 0.3s ease;
-        }
-
-        .sidebar a:hover,
-        .sidebar a.active {
-            background-color: #e17400;
-        }
-
-        .main-content {
-            margin-left: 250px;
-            padding: 2rem;
-            width: 100%;
-        }
-
-        .dashboard-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-
-        .dashboard-header h1 {
-            font-size: 28px;
-            color: #533b77;
-            margin: 0;
-        }
-
-        .logout-btn {
-            background-color: #e17400;
-            color: white;
-            padding: 10px 16px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .stat-card {
-            background-color: #ffffff;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            position: relative;
-            transition: transform 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .stat-icon {
-            width: 50px;
-            height: 50px;
-            background-color: #533b77;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            position: absolute;
-            top: -20px;
-            left: 20px;
-        }
-
-        .stat-content {
-            margin-left: 70px;
-        }
-
-        .stat-content h3 {
-            margin: 0;
-            font-size: 18px;
-            color: #533b77;
-        }
-
-        .stat-content p {
-            font-size: 24px;
-            margin: 5px 0;
-            font-weight: bold;
-            color: #000000;
-        }
-
-        .stat-link {
-            display: inline-block;
-            margin-top: 10px;
-            color: #e17400;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        .stat-link i {
-            margin-left: 5px;
-        }
-
-        .recent-activity {
-            background-color: #ffffff;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .recent-activity h3 {
-            margin-top: 0;
-            font-size: 20px;
-            color: #533b77;
-            margin-bottom: 1rem;
-        }
-
-        .activity-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .activity-icon {
-            width: 40px;
-            height: 40px;
-            background-color: #533b77;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-        }
-
-        .activity-details {
-            flex: 1;
-        }
-
-        .activity-user {
-            margin: 0;
-            font-weight: bold;
-            color: #000000;
-        }
-
-        .activity-action {
-            margin: 4px 0;
-            font-size: 14px;
-            color: #555;
-        }
-
-        .activity-time {
-            color: #999;
-            font-size: 12px;
-        }
-
-        .no-activity {
-            text-align: center;
-            color: #999;
-            margin-top: 1rem;
-        }
-    </style>
+    <link rel="stylesheet" href="/assets/css/admin.css">
 </head>
 <body>
 
@@ -245,7 +44,7 @@ $recent_activities = [
     <div class="main-content">
         <div class="dashboard-header">
             <h1><i class="fas fa-tachometer-alt"></i> Панель управления</h1>
-            <a href="logout.php" class="logout-btn">Выйти</a>
+            <a href="/logout.php" class="logout-btn">Выйти</a>
         </div>
 
         <!-- Статистика -->
@@ -264,7 +63,7 @@ $recent_activities = [
                 <div class="stat-content">
                     <h3>Услуги</h3>
                     <p><?= $service_count ?></p>
-                    <a href="content_management/services.php" class="stat-link">Управление <i class="fas fa-arrow-right"></i></a>
+                    <a href="\pages\services.php" class="stat-link">Управление <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
 

@@ -64,18 +64,4 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
-    // Мобильное меню (если нужно)
-    const menuToggle = document.createElement('button');
-    menuToggle.className = 'menu-toggle';
-    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-    const navList = document.querySelector('.nav-list');
-    
-    if (navList) {
-        navList.parentNode.insertBefore(menuToggle, navList);
-        
-        menuToggle.addEventListener('click', function() {
-            navList.classList.toggle('active');
-        });
-    }
-});
+    });
