@@ -182,4 +182,3 @@ if (isset($_SESSION['flash_message'])) {
     <?php endfor; ?>
 </div>
 
-<?php require_once __DIR__ . '/../includes/admin_footer.php'; ?>

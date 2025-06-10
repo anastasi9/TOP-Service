@@ -34,20 +34,16 @@ require_once 'includes/auth.php';  // Сессия запускается зде
         "@type": "PostalAddress",
         "streetAddress": "Земляной Вал, 64с2",
         "addressLocality": "Москва",
-        "postalCode": "123456",
+        "postalCode": "109004",
         "addressCountry": "RU"
       },
       "contactPoint": {
         "@type": "ContactPoint",
-        "telephone": "+7-XXX-XXX-XX-XX",
+        "telephone": "+7-800-500-64-68",
         "contactType": "customer service",
-        "email": "info@topservice.ru",
+        "email": "support@it-horeca.ru",
         "availableLanguage": ["Russian"]
       },
-      "sameAs": [
-        "https://vk.com/topservice",
-        "https://facebook.com/topservice"
-      ]
     }
     </script>
 

@@ -660,7 +660,7 @@ header {
 }
 
 .automation-hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/img/automation/hero-bg.jpg');
+  background: linear-gradient(rgba(83, 59, 119, 0.9), rgba(0, 0, 0, 0.7)), url('/img/automation/hero-bg.jpg');
   background-size: cover;
   background-position: center;
   color: white;
@@ -930,7 +930,7 @@ header {
 }
 
 .benefit-card {
-    background: #fff;
+    background: #ffffff;
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -1093,4 +1093,140 @@ mark {
     color: whitesmoke;
     padding: 0 2px;
     border-radius: 2px;
+}
+
+/* Базовые стили */
+
+/* Обнуление стандартных отступов */
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Контейнер для центрирования контента */
+.container {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* HERO секция — главная */
+.hero-section {
+    background-color: #533b77;
+    color: #ffffff;
+    text-align: center;
+    padding: 60px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 10px;
+    background-color: #e17400;
+    border-radius: 5px;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0.9;
+}
+
+/* Секция основного контента */
+.content-section {
+    background-color: #ffffff;
+    padding: 40px 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    margin-top: -30px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Заголовки и текст */
+.about-content h2 {
+    color: #533b77;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 20px;
+    line-height: 1.7;
+}
+
+/* Список возможностей */
+.features-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 30px;
+}
+
+.features-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.features-list li::before {
+    content: "✔";
+    color: #e17400;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Кнопка CTA */
+.cta-button {
+    text-align: center;
+    margin-top: 30px;
+}
+
+
+.cta-button {
+  display: inline-block;
+  background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+.cta-button a:hover {
+    background-color: #c96600;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(225, 116, 0, 0.3);
+}
+
+/* Адаптация под мобильные устройства */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.2rem;
+    }
+
+    .content-section {
+        padding: 30px 15px;
+    }
 }

@@ -161,7 +161,7 @@
 </main>
     
     <!-- Подключение скриптов -->
-    <script src="scripts/app.js" defer></script>
+    <script src="\js\script.js" defer></script>
 </body>
 </html>
 

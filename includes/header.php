@@ -24,8 +24,8 @@
                 </div>
                 
                 <div class="header-actions">
-                    <a href="tel:+79999999999" class="phone-link">
-                        <i class="fas fa-phone"></i> +7 (919) 101-61-62
+                    <a href="tel:+78005006468" class="phone-link">
+                        <i class="fas fa-phone"></i> +7 (800) 500-64-68
                     </a>
                     <button class="callback-btn">
                         <i class="fas fa-phone-volume"></i> Заказать звонок
@@ -44,7 +44,7 @@
             <li class="nav-item"><a href="/pages/audit.php" class="nav-link">Аудит</a></li>
             <li class="nav-item"><a href="/pages/service.php" class="nav-link">Сервисное обслуживание</a></li>
             <li class="nav-item"><a href="/pages/services.php" class="nav-link">Услуги</a></li>
-            <li class="nav-item"><a href="about.php" class="nav-link">О компании</a></li>
+            <li class="nav-item"><a href="/pages/about.php" class="nav-link">О компании</a></li>
             <li class="nav-item"><a href="/pages/contact.php" class="nav-link">Контакты</a></li>
 
             
@@ -95,28 +95,56 @@
         <ul class="breadcrumb-list">
             <li class="breadcrumb-item"><a href="/"><i class="fas fa-home"></i></a></li>
             <?php 
-            // Динамическое отображение хлебных крошек
+            // Словарь перевода частей URL на русский язык
+            $translations = [
+                'index' => 'Главная',
+                'automation' => 'Автоматизация',
+                'audit' => 'Аудит',
+                'service' => 'Сервисное обслуживание',
+                'services' => 'Услуги',
+                'about' => 'О компании',
+                'contact' => 'Контакты',
+                'contacts' => 'Контакты',
+                'login' => 'Вход',
+                'register' => 'Регистрация',
+                'user_profile' => 'Профиль',
+                'admin' => 'Админка',
+                'moderator' => 'Модератор',
+                // Добавьте другие страницы по мере необходимости
+            ];
+
             $uri = $_SERVER['REQUEST_URI'];
             $path = parse_url($uri, PHP_URL_PATH);
             $parts = explode('/', trim($path, '/'));
-            
-            $breadcrumbs = array();
+
+            $breadcrumbs = [];
             $url = '';
-            
+
             foreach ($parts as $part) {
                 if (!empty($part)) {
                     $url .= '/' . $part;
-                    $name = ucfirst(str_replace(array('.php', '-', '_'), array('', ' ', ' '), $part));
-                    $breadcrumbs[] = array('url' => $url, 'name' => $name);
+
+                    // Получаем имя файла без расширения, если есть
+                    $fileName = pathinfo($part, PATHINFO_FILENAME);
+
+                    // Проверяем, является ли это "pages"
+                    if ($fileName === 'pages') {
+                        $name = 'Страница';
+                    } else {
+                        // Используем перевод, если он задан, иначе преобразуем автоматически
+                        $name = $translations[$fileName] ?? ucfirst(str_replace(['-', '_'], ' ', $fileName));
+                    }
+
+                    $breadcrumbs[] = ['url' => $url, 'name' => $name];
                 }
             }
-            
+
             foreach ($breadcrumbs as $index => $crumb) {
                 $is_last = ($index === count($breadcrumbs) - 1);
                 if ($is_last) {
-                    echo '<li class="breadcrumb-item active">' . $crumb['name'] . '</li>';
+                    echo '<li class="breadcrumb-item active">' . htmlspecialchars($crumb['name']) . '</li>';
                 } else {
-                    echo '<li class="breadcrumb-item"><a href="' . $crumb['url'] . '">' . $crumb['name'] . '</a></li>';
+                    echo '<li class="breadcrumb-item"><a href="' . htmlspecialchars($crumb['url']) . '">' . htmlspecialchars($crumb['name']) . '</a></li>';
                     echo '<li class="breadcrumb-separator"><i class="fas fa-chevron-right"></i></li>';
                 }
             }
@@ -124,7 +152,6 @@
         </ul>
     </div>
 </nav>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 
