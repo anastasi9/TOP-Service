@@ -1230,3 +1230,163 @@ h1, h2, h3, h4, h5, h6, p {
         padding: 30px 15px;
     }
 }
+
+/* Общие стили для секций */
+.offices-section, .map-section, .service-section {
+    padding: 60px 0;
+    font-family: 'Arial', sans-serif;
+    color: #ffffff;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-header h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #e17400;
+}
+
+.section-header p {
+    font-size: 18px;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+/* Стили для контактной информации */
+.section-header p strong {
+    color: #fcfcfc;
+    font-weight: 600;
+}
+
+.section-header p a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.section-header p a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+/* Стили для карт */
+.map-section {
+    background-color: #f9f9f9;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.map-section h3 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #e17400;
+    text-align: center;
+}
+
+.map-section h4 {
+    font-size: 20px;
+    margin-bottom: 25px;
+    color: #555;
+    text-align: center;
+    font-weight: 400;
+}
+
+.yandex-map {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px white;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+/* Стили для формы */
+.service-form-container {
+    background: e17400;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px white;
+}
+
+.service-form .form-group {
+    margin-bottom: 25px;
+}
+
+.service-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.service-form input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border 0.3s ease;
+}
+
+.service-form input:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+.service-btn {
+    width: 100%;
+    padding: 14px;
+    background: #e17400;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.service-btn:hover {
+    background: #2980b9;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .offices-section, .map-section, .service-section {
+        padding: 40px 0;
+    }
+    
+    .section-header h2 {
+        font-size: 28px;
+    }
+    
+    .map-section h3 {
+        font-size: 24px;
+    }
+    
+    .map-section h4 {
+        font-size: 18px;
+    }
+    
+    .service-form-container {
+        padding: 30px 20px;
+    }
+}
+.service-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(90deg, #ff5733, #ff8c00); /* Градиент */
+    color: white;
+    border: none;
+    border-radius: 25px; /* Круглые углы */
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 87, 51, 0.5); /* Тень */
+}
+
+.service-btn:hover {
+    background: linear-gradient(90deg, #ff7e5f, #ffae00); /* Изменение градиента при наведении */
+    box-shadow: 0 8px 25px rgba(255, 87, 51, 0.8); /* Усиление тени при наведении */
+}

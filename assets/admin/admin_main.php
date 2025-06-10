@@ -4,6 +4,16 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
     header('Location: ../login.php');
     exit();
 }
+// Подключение к БД
+require_once '../../includes/db_connect.php';
+
+// Получение количества лидов из таблицы leads
+$lead_count = 0;
+$sql = "SELECT COUNT(*) as total FROM leads";
+$result = $conn->query($sql);
+if ($result && $row = $result->fetch_assoc()) {
+    $lead_count = $row['total'];
+}
 
 // Пример данных для статистики
 $user_count = 128;
@@ -75,8 +85,15 @@ $recent_activities = [
                     <a href="requests/list_requests.php" class="stat-link">Просмотр <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-        </div>
-
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-user-tag"></i></div>
+                <div class="stat-content">
+                    <h3>Лиды</h3>
+                    <p><?= $lead_count ?></p>
+                    <a href="/assets/admin/leads.php" class="stat-link">Просмотр <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
         <!-- Последние действия -->
         <div class="recent-activity">
             <h3><i class="fas fa-history"></i> Последние действия</h3>

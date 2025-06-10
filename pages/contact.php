@@ -9,164 +9,134 @@
     <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
 </head>
 <body>
+<?php
+session_start();
+require_once '../includes/header.php';
+require_once '../includes/db_connect.php';
 
-    <main class="service-page">
-    <!-- Микроразметка -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "serviceType": "IT обслуживание ресторанов",
-      "provider": {
-        "@type": "Organization",
-        "name": "ТОП Сервис"
-      }
+// Обработка отправки формы
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Получаем данные из формы
+    $name = trim($_POST['name'] ?? '');
+    $phone = trim($_POST['phone'] ?? '');
+
+    // Валидация полей
+    if (empty($name) || empty($phone)) {
+        $_SESSION['error_message'] = "Пожалуйста, заполните все поля.";
+    } else {
+        try {
+            // Подготовленный запрос для вставки данных в таблицу leads
+            $stmt = $conn->prepare("INSERT INTO leads (name, phone) VALUES (?, ?)");
+            $stmt->bind_param("ss", $name, $phone);
+
+            // Выполняем запрос
+            if ($stmt->execute()) {
+                $_SESSION['success_message'] = "Спасибо! Мы свяжемся с вами.";
+            } else {
+                $_SESSION['error_message'] = "Ошибка: Не удалось отправить заявку.";
+            }
+
+            // Закрываем подготовленный запрос
+            $stmt->close();
+        } catch (Exception $e) {
+            $_SESSION['error_message'] = "Произошла ошибка: " . htmlspecialchars($e->getMessage());
+        }
+        
+        // Перенаправляем на эту же страницу, чтобы избежать повторной отправки формы
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit();
     }
-    </script>
+}
+?>
 
-    <!-- Герой-секция -->
-    <section class="service-hero">
-        <div class="hero-content">
-            <h1>Сервисное обслуживание</h1>
-            <p class="subtitle">Профессиональная поддержка вашего бизнеса 24/7</p>
-            <div class="highlight-box">
-                <p>Техническая поддержка • Проактивный мониторинг • Гарантированное время реакции</p>
-            </div>
-            <a href="#order" class="cta-button">Оставить заявку</a>
-        </div>
-    </section>
+<!-- Вывод сообщений об ошибках/успехе -->
+<?php if (isset($_SESSION['error_message'])): ?>
+    <div class='error-message'><?= $_SESSION['error_message'] ?></div>
+    <?php unset($_SESSION['error_message']); ?>
+<?php endif; ?>
 
-    <!-- Преимущества -->
-    <section class="service-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Почему выбирают наше обслуживание</h2>
-                <p>Мы обеспечиваем максимальную надежность ваших систем</p>
-            </div>
-            
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="service-card">
-                        <h3>24/7 Поддержка</h3>
-                        <p>Круглосуточная техническая поддержка без выходных и праздников</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="service-card">
-                        <h3>Гарантия SLA</h3>
-                        <p>Строгое соблюдение соглашений об уровне сервиса</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="service-card">
-                        <h3>Эксперты</h3>
-                        <p>Сертифицированные специалисты с опытом от 5 лет</p>
-                    </div>
+<?php if (isset($_SESSION['success_message'])): ?>
+    <div class='success-message'><?= $_SESSION['success_message'] ?></div>
+    <?php unset($_SESSION['success_message']); ?>
+<?php endif; ?>
+
+<section id="offices" class="offices-section small-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-header">
+                    <h2>Наши офисы</h2>
+                    <p>
+                        <strong>Телефон:</strong> 
+                        <a href="tel:+78005006468">+7 (800) 500-64-68</a>
+                        <br>
+                        <strong>Email:</strong> 
+                        <a href="mailto:support@it-horeca.ru">support@it-horeca.ru</a>
+                    </p>
                 </div>
             </div>
         </div>
+    </div>
+</section>
     </section>
-
-    <!-- Тарифы -->
-    <section class="service-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Пакеты обслуживания</h2>
-                <p>Выберите оптимальное решение для вашего бизнеса</p>
-            </div>
-            
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="plan-card">
-                        <h3>Информационное</h3>
-                        <ul>
-                            <li>Удаленный мониторинг</li>
-                            <li>Консультации</li>
-                            <li>Отчеты</li>
-                        </ul>
-                        <div class="plan-price">от 32 000 ₽/мес</div>
-                        <a href="#order" class="service-btn btn-primary">Заказать</a>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="plan-card">
-                        <h3>Техническое</h3>
-                        <ul>
-                            <li>Выезд специалиста</li>
-                            <li>Ремонт оборудования</li>
-                            <li>Профилактика</li>
-                        </ul>
-                        <div class="plan-price">от 45 000 ₽/мес</div>
-                        <a href="#order" class="service-btn btn-primary">Заказать</a>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="plan-card">
-                        <h3>Комплексное</h3>
-                        <ul>
-                            <li>Полный спектр услуг</li>
-                            <li>Персональный менеджер</li>
-                            <li>Гарантия 24/7</li>
-                        </ul>
-                        <div class="plan-price">от 75 000 ₽/мес</div>
-                        <a href="#order" class="service-btn btn-primary">Заказать</a>
-                    </div>
+<!-- Блок с первой картой -->
+<section id="map" class="map-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Адрес офиса в Москве</h3>
+                <h4>Москва, улица Земляной Вал, 64с2</h4>
+                <div class="yandex-map">
+                    <iframe src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ac60a8269ed6c6fa4a4084f0ecab17c80b6e1e6959fd2f6b5275e1df30928a49f" 
+                            width="100%" height="400" frameborder="0"></iframe>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Форма заявки -->
-    <section id="order" class="service-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 offset-md-3">
-                    <div class="service-form-container">
-                        <div class="section-header">
-                            <h2>Оставить заявку</h2>
-                            <p>Заполните форму и наш менеджер свяжется с вами</p>
+<!-- Блок со второй картой -->
+<section id="map-sochi" class="map-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Адрес офиса в Сочи</h3>
+                <h4>Краснодарский край, Сочи, улица Мира, 42</h4>
+                <div class="yandex-map">
+                    <iframe src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A6d086fb90b7155018d13ffd0a985b4efcd43f34ec08f470b92e516d959b75086" 
+                            width="100%" height="400" frameborder="0"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="order" class="service-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="service-form-container">
+                    <div class="section-header">
+                        <h2>Оставить заявку на консультацию</h2>
+                        <p>Заполните форму и мы с вами свяжемся</p>
+                    </div>
+                    
+                    <form class="service-form" method="POST" action="">
+                        <div class="form-group">
+                            <label>Ваше имя</label>
+                            <input type="text" name="name" required>
                         </div>
                         
-                        <form class="service-form">
-                            <div class="form-group">
-                                <label>Ваше имя</label>
-                                <input type="text" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label>Телефон</label>
-                                <input type="tel" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label>Тип обслуживания</label>
-                                <select>
-                                    <option>Информационное</option>
-                                    <option>Техническое</option>
-                                    <option>Комплексное</option>
-                                </select>
-                            </div>
-                            
-                            <button type="submit" class="service-btn btn-primary">Отправить заявку</button>
-                        </form>
-                    </div>
+                        <div class="form-group">
+                            <label>Телефон</label>
+                            <input type="tel" name="phone" required>
+                        </div>
+                        <button type="submit" class="service-btn btn-primary">Отправить заявку</button>
+                    </form>
                 </div>
             </div>
         </div>
-    </section>
-</main>
-    
-    <!-- Подключение скриптов -->
-    <script src="\js\script.js" defer></script>
+    </div>
+</section>
 </body>
-</html>
-
-
-
-
-
-
