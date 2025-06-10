@@ -34,13 +34,28 @@ if ($result) {
 <body>
 
 <div class="admin-container">
+    <!-- Боковое меню -->
+    <div class="sidebar">
+        <h2><i class="fas fa-user-shield"></i> Админ-панель</h2>
+        <a href="dashboard.php"><i class="fas fa-tachometer-alt"></i> Дашборд</a>
+        <a href="services.php"><i class="fas fa-concierge-bell"></i> Услуги</a>
+        <a href="leads.php" class="active"><i class="fas fa-user-tag"></i> Лиды</a>
+        <a href="users.php"><i class="fas fa-users"></i> Пользователи</a>
+        <a href="settings.php"><i class="fas fa-cog"></i> Настройки</a>
+        <a href="/logout.php">Выйти</a>
+    </div>
 
-
-
-    <!-- Main Content -->
+    <!-- Основной контент -->
     <div class="main-content">
-        <div class="dashboard-header">
-            <h1><i class="fas fa-user-tag"></i> Лиды</h1>
+        <div class="actions-header">
+            <div class="dashboard-header">
+                <h1><i class="fas fa-user-tag"></i> Лиды</h1>
+            </div>
+            <div class="search-filter">
+                <input type="text" class="search-box" placeholder="Поиск по имени или телефону...">
+                <input type="date" class="date-filter">
+                <button class="export-btn"><i class="fas fa-file-export"></i> Экспорт</button>
+            </div>
         </div>
 
         <?php if (count($leads) > 0): ?>
@@ -51,6 +66,7 @@ if ($result) {
                         <th>Имя</th>
                         <th>Телефон</th>
                         <th>Дата заявки</th>
+                        <th>Действия</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,14 +74,18 @@ if ($result) {
                         <tr>
                             <td><?= $index + 1 ?></td>
                             <td><?= htmlspecialchars($lead['name']) ?></td>
-                            <td><?= htmlspecialchars($lead['phone']) ?></td>
+                            <td><a href="tel:<?= htmlspecialchars($lead['phone']) ?>"><?= htmlspecialchars($lead['phone']) ?></a></td>
                             <td><?= date('d.m.Y H:i', strtotime($lead['created_at'])) ?></td>
+                            <td>
+                                <button class="btn-edit"><i class="fas fa-eye"></i></button>
+                                <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
         <?php else: ?>
-            <p class="no-data">Нет лидов. Заявки еще не поступали.</p>
+            <p class="no-data"><i class="fas fa-info-circle"></i> Нет лидов. Заявки еще не поступали.</p>
         <?php endif; ?>
     </div>
 </div>

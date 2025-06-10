@@ -3,7 +3,7 @@ require_once __DIR__ . '/includes/admin_header.php';
 
 // Статистика для дашборда
 $users_count = $pdo->query("SELECT COUNT(*) FROM users")->fetchColumn();
-$active_users = $pdo->query("SELECT COUNT(*) FROM users WHERE status = 'active'")->fetchColumn();
+$active_users = $users_count;
 $content_items = $pdo->query("SELECT COUNT(*) FROM content")->fetchColumn();
 $recent_activities = $pdo->query("SELECT a.*, u.username 
                                  FROM activity_log a 
@@ -52,4 +52,3 @@ $recent_activities = $pdo->query("SELECT a.*, u.username
     </table>
 </div>
 
-<?php require_once __DIR__ . '/includes/admin_footer.php'; ?>
