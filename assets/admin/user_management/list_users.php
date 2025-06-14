@@ -150,10 +150,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create_user'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/admin.css?v=<?= time() ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Добавляем класс collapsed к сайдбару при загрузке
+            document.querySelector('.sidebar').classList.add('collapsed');
+            
+            // Для мобильных устройств добавляем кнопку меню
+            if (window.innerWidth <= 768) {
+                const trigger = document.querySelector('.sidebar-trigger');
+                trigger.addEventListener('click', function() {
+                    document.querySelector('.sidebar').classList.toggle('active');
+                });
+            }
+        });
+    </script>
+
 </head>
 <body>
 
 <div class="admin-container">
+    <!-- Триггер для показа сайдбара -->
+    <div class="sidebar-trigger"></div>
+    
     <!-- Sidebar -->
     <div class="sidebar">
         <h2>Админ панель</h2>

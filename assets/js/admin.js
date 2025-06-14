@@ -38,3 +38,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+document.querySelector('.sidebar').classList.add('collapsed');
+
+
+if (window.innerWidth > 768) {
+    document.querySelector('.sidebar').classList.remove('collapsed');
+} else {
+    document.querySelector('.sidebar').classList.add('collapsed');
+}

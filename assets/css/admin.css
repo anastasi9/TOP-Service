@@ -743,3 +743,59 @@ cursor: pointer;
 }
 
 
+/* Стили для скрывающегося сайдбара */
+.sidebar {
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.sidebar.collapsed {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.main-content {
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar.collapsed + .main-content {
+    margin-left: 0;
+}
+
+.sidebar-trigger {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    z-index: 1001;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.sidebar-trigger:hover + .sidebar,
+.sidebar:hover {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    
+    .sidebar.active {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    
+    .sidebar + .main-content {
+        margin-left: 0;
+    }
+    
+    .sidebar-trigger {
+        display: block;
+    }
+}
