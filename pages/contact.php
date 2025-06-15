@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 </section>
-    </section>
+
 <!-- Блок с первой картой -->
 <section id="map" class="map-section">
     <div class="container">
@@ -87,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <h3>Адрес офиса в Москве</h3>
                 <h4>Москва, улица Земляной Вал, 64с2</h4>
                 <div class="yandex-map">
-                    <iframe src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ac60a8269ed6c6fa4a4084f0ecab17c80b6e1e6959fd2f6b5275e1df30928a49f" 
+                    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Ac60a8269ed6c6fa4a4084f0ecab17c80b6e1e6959fd2f6b5275e1df30928a49f&amp;source=constructor" 
                             width="100%" height="400" frameborder="0"></iframe>
                 </div>
             </div>
@@ -103,14 +103,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <h3>Адрес офиса в Сочи</h3>
                 <h4>Краснодарский край, Сочи, улица Мира, 42</h4>
                 <div class="yandex-map">
-                    <iframe src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A6d086fb90b7155018d13ffd0a985b4efcd43f34ec08f470b92e516d959b75086" 
+                    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A6d086fb90b7155018d13ffd0a985b4efcd43f34ec08f470b92e516d959b75086&amp;source=constructor" 
                             width="100%" height="400" frameborder="0"></iframe>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
 
 <section id="order" class="service-section">
     <div class="container">
@@ -139,4 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 </section>
+
+<?php require_once '../includes/footer.php'; ?>
 </body>
+</html>
