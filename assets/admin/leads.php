@@ -34,15 +34,18 @@ if ($result) {
 <body>
 
 <div class="admin-container">
-    <!-- Боковое меню -->
+<!-- Sidebar -->
     <div class="sidebar">
-        <h2><i class="fas fa-user-shield"></i> Админ-панель</h2>
-        <a href="dashboard.php"><i class="fas fa-tachometer-alt"></i> Дашборд</a>
-        <a href="services.php"><i class="fas fa-concierge-bell"></i> Услуги</a>
-        <a href="leads.php" class="active"><i class="fas fa-user-tag"></i> Лиды</a>
-        <a href="users.php"><i class="fas fa-users"></i> Пользователи</a>
-        <a href="settings.php"><i class="fas fa-cog"></i> Настройки</a>
-        <a href="/logout.php">Выйти</a>
+        <h2>Админ панель</h2>
+        <a href="/assets/admin/admin_main.php" <?= basename($_SERVER['PHP_SELF']) === 'admin_main.php' ? 'class="active"' : '' ?>>
+            <i class="fas fa-tachometer-alt"></i> Главная
+        </a>
+        <a href="\assets\admin\user_management\list_users.php" <?= basename($_SERVER['PHP_SELF']) === 'list_users.php' ? 'class="active"' : '' ?>>
+            <i class="fas fa-users"></i> Пользователи
+        </a>
+        <a href="\assets\admin\leads.php" <?= basename($_SERVER['PHP_SELF']) === 'leads.php' ? 'class="active"' : '' ?>>
+            <i class="fas fa-tachometer-alt"></i> Лиды
+        </a>
     </div>
 
     <!-- Основной контент -->

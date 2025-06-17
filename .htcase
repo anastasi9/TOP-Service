@@ -1,0 +1,110 @@
+# ========================
+# БАЗОВЫЕ НАСТРОЙКИ
+# ========================
+Options -Indexes +FollowSymLinks -MultiViews
+RewriteEngine On
+AddDefaultCharset UTF-8
+DirectoryIndex index.php index.html
+
+# Автоматическое определение базового пути
+RewriteBase /
+
+# ========================
+# ЗАЩИТА ОТ ОШИБОК 500
+# ========================
+# Отключаем обработку .htaccess в подпапках
+AllowOverride None
+
+# Проверка поддержки mod_rewrite
+<IfModule !mod_rewrite.c>
+    ErrorDocument 500 "Server configuration error: mod_rewrite required"
+    Deny from all
+</IfModule>
+
+# ========================
+# ЧПУ (FRONT CONTROLLER)
+# ========================
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# ========================
+# БЕЗОПАСНОСТЬ
+# ========================
+# 1. Запрет доступа к системным файлам
+<FilesMatch "\.(env|htaccess|htpasswd|ini|log|sh|sql|json|config|bak)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# 2. Защита от XSS и MIME-спуфинга
+<IfModule mod_headers.c>
+    Header set X-XSS-Protection "1; mode=block"
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Кэширование статики
+    <FilesMatch "\.(css|js|jpg|jpeg|png|gif|webp|woff2)$">
+        Header set Cache-Control "max-age=31536000, public"
+    </FilesMatch>
+</IfModule>
+
+# ========================
+# НАСТРОЙКИ PHP
+# ========================
+<IfModule mod_php.c>
+    # Деактивация вывода ошибок на продакшене
+    php_flag display_errors off
+    php_flag log_errors on
+    php_value error_log error.log
+    php_value error_reporting 0
+    
+    # Лимиты для тяжелых скриптов
+    php_value memory_limit 256M
+    php_value max_execution_time 120
+    php_value upload_max_filesize 64M
+    php_value post_max_size 64M
+    php_value max_input_vars 3000
+</IfModule>
+
+# ========================
+# РЕДИРЕКТЫ
+# ========================
+# 1. HTTP → HTTPS (раскомментировать при наличии SSL)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# 2. www → без www (или наоборот)
+# RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+# RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
+# ========================
+# ОБРАБОТКА ОШИБОК
+# ========================
+ErrorDocument 400 /error.php?code=400
+ErrorDocument 401 /error.php?code=401
+ErrorDocument 403 /error.php?code=403
+ErrorDocument 404 /error.php?code=404
+ErrorDocument 500 /error.php?code=500
+
+# ========================
+# ДОПОЛНИТЕЛЬНЫЕ ФИКСЫ
+# ========================
+# 1. Фикс для CORS (если нужен API)
+<IfModule mod_headers.c>
+    SetEnvIf Origin "^http(s)?://(.+\.)?(domain\.com|localhost)(:[0-9]+)?$" CORS=$0
+    Header set Access-Control-Allow-Origin "%{CORS}e" env=CORS
+    Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type, Authorization"
+</IfModule>
+
+# 2. Запрет горячих ссылок на изображения
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^https?://(www\.)?yourdomain.com [NC]
+RewriteRule \.(jpg|jpeg|png|gif)$ - [NC,F,L]
+
+# 3. GZIP-сжатие
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript
+</IfModule>

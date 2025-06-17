@@ -40,14 +40,18 @@ $recent_activities = [
 <body>
 
 <div class="admin-container">
-    <!-- Sidebar -->
+<!-- Sidebar -->
     <div class="sidebar">
         <h2>Админ панель</h2>
-        <a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Главная</a>
-        <a href="#"><i class="fas fa-users"></i> Пользователи</a>
-        <a href="#"><i class="fas fa-concierge-bell"></i> Услуги</a>
-        <a href="#"><i class="fas fa-clipboard-list"></i> Заявки</a>
-        <a href="#"><i class="fas fa-cog"></i> Настройки</a>
+        <a href="/assets/admin/admin_main.php" <?= basename($_SERVER['PHP_SELF']) === 'admin_main.php' ? 'class="active"' : '' ?>>
+            <i class="fas fa-tachometer-alt"></i> Главная
+        </a>
+        <a href="\assets\admin\user_management\list_users.php" <?= basename($_SERVER['PHP_SELF']) === 'list_users.php' ? 'class="active"' : '' ?>>
+            <i class="fas fa-users"></i> Пользователи
+        </a>
+        <a href="\assets\admin\leads.php" <?= basename($_SERVER['PHP_SELF']) === 'leads.php' ? 'class="active"' : '' ?>>
+            <i class="fas fa-tachometer-alt"></i> Лиды
+        </a>
     </div>
 
     <!-- Main Content -->

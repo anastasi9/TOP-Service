@@ -1,44 +1,45 @@
-<?php
-session_start();
-
-require_once __DIR__ . '/../../../includes/functions.php';
-
-// Проверка авторизации
-if (!is_logged_in()) {
-    redirect_with_message('/login.php', 'Требуется авторизация', 'error');
-}
-
-// Проверка прав администратора
-if (!has_role('admin')) {
-    redirect_with_message('/', 'Доступ запрещен', 'error');
-}
-
-// Получаем информацию о текущем пользователе
-$pdo = get_db_connection();
-$stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
-$stmt->execute([$_SESSION['user_id']]);
-$current_user = $stmt->fetch();
-
-// Проверка бана пользователя
-if ($current_user['is_banned']) {
-    session_destroy();
-    redirect_with_message('/login.php', 'Ваш аккаунт заблокирован', 'error');
-}
-
-// Получаем настройки сайта
-$settings = $pdo->query("SELECT setting_key, setting_value FROM settings")->fetchAll(PDO::FETCH_KEY_PAIR);
-?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <title><?= $page_title ?? 'Админ панель' ?></title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/admin.css?v=<?= time() ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Админ-панель | <?= e($settings['site_name'] ?? 'ТОП Сервис') ?></title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/css/admin.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Добавляем класс collapsed к сайдбару при загрузке
+            document.querySelector('.sidebar').classList.add('collapsed');
+            
+            // Для мобильных устройств добавляем кнопку меню
+            if (window.innerWidth <= 768) {
+                const trigger = document.querySelector('.sidebar-trigger');
+                trigger.addEventListener('click', function() {
+                    document.querySelector('.sidebar').classList.toggle('active');
+                });
+            }
+        });
+    </script>
 </head>
 <body>
-    <div class="admin-container">
-        <?php include __DIR__ . '/admin_navbar.php'; ?>
-        <div class="admin-content">
+
+<div class="admin-container">
+    <!-- Триггер для показа сайдбара -->
+    <div class="sidebar-trigger"></div>
+    
+    <!-- Подключаем сайдбар -->
+    <?php include __DIR__ . '/admin_sidebar.php'; ?>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="dashboard-header">
+            <h1><?= $page_heading ?? 'Админ панель' ?></h1>
+            <a href="/logout.php" class="logout-btn">Выйти</a>
+        </div>
+
+        <!-- Flash сообщения -->
+        <?php if (isset($_SESSION['flash_message'])): ?>
+            <div class="flash-message"><?= $_SESSION['flash_message'] ?></div>
+            <?php unset($_SESSION['flash_message']); ?>
+        <?php endif; ?>

@@ -1,26 +1,20 @@
 <?php
-$servername = 'localhost';
-$username = 'root';
-$password = "mysql";
-$dbname = 'topservice_db';
-
-// Создаем соединение MySQLi
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Проверяем соединение
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Устанавливаем кодировку
-$conn->set_charset("utf8");
-?>
-<?php
 session_start();
 if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
     header('Location: ../login.php');
     exit();
 }
+
+// Подключение к БД
+require_once '../../../includes/db_connect.php';
+
+// Установка заголовков страницы
+$page_title = 'Управление пользователями';
+$page_heading = '<i class="fas fa-users"></i> Управление пользователями';
+
+// Подключаем шапку
+require_once __DIR__ . '../../includes/admin_header.php';
+
 // Установка кодировки
 $conn->set_charset('utf8');
 
@@ -141,182 +135,131 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create_user'])) {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Управление пользователями</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="/assets/css/admin.css?v=<?= time() ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Добавляем класс collapsed к сайдбару при загрузке
-            document.querySelector('.sidebar').classList.add('collapsed');
-            
-            // Для мобильных устройств добавляем кнопку меню
-            if (window.innerWidth <= 768) {
-                const trigger = document.querySelector('.sidebar-trigger');
-                trigger.addEventListener('click', function() {
-                    document.querySelector('.sidebar').classList.toggle('active');
-                });
-            }
-        });
-    </script>
-
-</head>
-<body>
-
-<div class="admin-container">
-    <!-- Триггер для показа сайдбара -->
-    <div class="sidebar-trigger"></div>
-    
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <h2>Админ панель</h2>
-        <a href="/assets/admin/admin_main.php"><i class="fas fa-tachometer-alt"></i> Главная</a>
-        <a href="list_users.php" class="active"><i class="fas fa-users"></i> Пользователи</a>
-        <a href="#"><i class="fas fa-concierge-bell"></i> Услуги</a>
-        <a href="#"><i class="fas fa-clipboard-list"></i> Заявки</a>
-        <a href="#"><i class="fas fa-cog"></i> Настройки</a>
+<!-- Фильтры -->
+<form method="get" class="user-filter-form">
+    <div class="form-group">
+        <i class="fas fa-search"></i>
+        <input type="text" name="search" value="<?= htmlspecialchars($search) ?>" placeholder="Поиск по имени или email">
     </div>
+    
+    <div class="form-group">
+        <select name="role">
+            <option value="">Все роли</option>
+            <option value="admin" <?= $role_filter === 'admin' ? 'selected' : '' ?>>Администраторы</option>
+            <option value="moderator" <?= $role_filter === 'moderator' ? 'selected' : '' ?>>Модераторы</option>
+            <option value="user" <?= $role_filter === 'user' ? 'selected' : '' ?>>Пользователи</option>
+        </select>
+    </div>
+    
+    <button type="submit" class="btn-filter">
+        <i class="fas fa-filter"></i> Фильтровать
+    </button>
+    <a href="list_users.php" class="btn-reset">
+        <i class="fas fa-times"></i> Сбросить
+    </a>
+</form>
 
-    <!-- Main Content -->
-    <div class="main-content">
-        <div class="dashboard-header">
-            <h1><i class="fas fa-users"></i> Управление пользователями</h1>
-            <a href="/logout.php" class="logout-btn">Выйти</a>
-        </div>
+<!-- Форма добавления нового пользователя -->
+<div class="add-user-form">
+    <h2>Добавить нового пользователя</h2>
+    <form method="post" action="<?= $_SERVER['PHP_SELF'] ?>">
+        <input type="text" name="new_username" placeholder="Логин" required>
+        <input type="email" name="new_email" placeholder="Email" required>
+        <input type="password" name="new_password" placeholder="Пароль" required>
+        <select name="new_role">
+            <option value="user">Пользователь</option>
+            <option value="moderator">Модератор</option>
+        </select>
+        <button type="submit" name="create_user" class="btn-create">Создать пользователя</button>
+    </form>
+</div>
 
-        <!-- Flash сообщения -->
-        <?php if (isset($_SESSION['flash_message'])): ?>
-            <div class="flash-message"><?= $_SESSION['flash_message'] ?></div>
-            <?php unset($_SESSION['flash_message']); ?>
-        <?php endif; ?>
+<?php if (!empty($search) || !empty($role_filter)): ?>
+    <div class="filter-info">
+        Применены фильтры:
+        <?php if (!empty($search)): ?> Поиск: <strong><?= htmlspecialchars($search) ?></strong><?php endif; ?>
+        <?php if (!empty($role_filter)): ?> Роль: <strong><?= htmlspecialchars($role_filter) ?></strong><?php endif; ?>
+        <a href="list_users.php" style="color:#007bff;">Сбросить</a>
+    </div>
+<?php endif; ?>
 
-        <!-- Фильтры -->
-        <form method="get" class="user-filter-form">
-            <div class="form-group">
-                <i class="fas fa-search"></i>
-                <input type="text" name="search" value="<?= htmlspecialchars($search) ?>" placeholder="Поиск по имени или email">
-            </div>
-            
-            <div class="form-group">
-                <select name="role">
-                    <option value="">Все роли</option>
-                    <option value="admin" <?= $role_filter === 'admin' ? 'selected' : '' ?>>Администраторы</option>
-                    <option value="moderator" <?= $role_filter === 'moderator' ? 'selected' : '' ?>>Модераторы</option>
-                    <option value="user" <?= $role_filter === 'user' ? 'selected' : '' ?>>Пользователи</option>
-                </select>
-            </div>
-            
-            <button type="submit" class="btn-filter">
-                <i class="fas fa-filter"></i> Фильтровать
-            </button>
-            <a href="list_users.php" class="btn-reset">
-                <i class="fas fa-times"></i> Сбросить
-            </a>
-        </form>
-        <!-- Форма добавления нового пользователя -->
-        <div class="add-user-form">
-            <h2>Добавить нового пользователя</h2>
-            <form method="post" action="<?= $_SERVER['PHP_SELF'] ?>">
-                <input type="text" name="new_username" placeholder="Логин" required>
-                <input type="email" name="new_email" placeholder="Email" required>
-                <input type="password" name="new_password" placeholder="Пароль" required>
-                <select name="new_role">
-                    <option value="user">Пользователь</option>
-                    <option value="moderator">Модератор</option>
-                </select>
-                <button type="submit" name="create_user" class="btn-create">Создать пользователя</button>
-            </form>
-        </div>
-        <?php if (!empty($search) || !empty($role_filter)): ?>
-            <div class="filter-info">
-                Применены фильтры:
-                <?php if (!empty($search)): ?> Поиск: <strong><?= htmlspecialchars($search) ?></strong><?php endif; ?>
-                <?php if (!empty($role_filter)): ?> Роль: <strong><?= htmlspecialchars($role_filter) ?></strong><?php endif; ?>
-                <a href="list_users.php" style="color:#007bff;">Сбросить</a>
-            </div>
-        <?php endif; ?>
-        <!-- Таблица пользователей -->
-        <div class="table-container">
-            <table class="users-table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Логин</th>
-                        <th>Email</th>
-                        <th>Роль</th>
-                        <th>Статус</th>
-                        <th>Дата регистрации</th>
-                        <th>Действия</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($users as $user): ?>
-                    <tr>
-                        <td><?= $user['id'] ?></td>
-                        <td><?= htmlspecialchars($user['username']) ?></td>
-                        <td><?= htmlspecialchars($user['email']) ?></td>
-                        <td>
-                            <span class="role-badge role-<?= $user['role'] ?>">
-                                <?= $user['role'] ?>
-                            </span>
-                        </td>
-                        <td>
-                            <?php if ($user['is_banned']): ?>
-                                <span class="status-badge status-banned">Заблокирован</span>
-                            <?php else: ?>
-                                <span class="status-badge status-active">Активен</span>
-                            <?php endif; ?>
-                        </td>
-                        <td><?= date('d.m.Y H:i', strtotime($user['created_at'])) ?></td>
-                        <td class="actions">
-                            <?php if ($user['id'] != $_SESSION['user_id']): ?>
-                                <?php if ($user['is_banned']): ?>
-                                    <form method="post" class="action-form">
-                                        <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
-                                        <button type="submit" name="action" value="unban" class="btn-action btn-unban">
-                                            <i class="fas fa-unlock"></i>
-                                        </button>
-                                    </form>
-                                <?php else: ?>
-                                    <form method="post" class="action-form">
-                                        <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
-                                        <button type="submit" name="action" value="ban" class="btn-action btn-ban">
-                                            <i class="fas fa-lock"></i>
-                                        </button>
-                                    </form>
-                                <?php endif; ?>
-                                
-                                    <!-- Выпадающий список смены роли -->
-                                <form method="post" class="action-form role-change-form">
-                                    <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
-                                    <input type="hidden" name="action" value="change_role">
-                                    <select name="new_role" onchange="this.form.submit()">
-                                        <option value="user" <?= $user['role'] === 'user' ? 'selected' : '' ?>>Пользователь</option>
-                                        <option value="moderator" <?= $user['role'] === 'moderator' ? 'selected' : '' ?>>Модератор</option>
-                                        <option value="admin" <?= $user['role'] === 'admin' ? 'selected' : '' ?>>Администратор</option>
-                                    </select>
-                                </form>
-                                
-                                <form method="post" class="action-form" onsubmit="return confirm('Вы уверены?')">
-                                    <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
-                                    <button type="submit" name="action" value="delete" class="btn-action btn-delete">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                                </form>
-                            <?php endif; ?>
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
-<input type="hidden" name="action" value="change_role">
-       <!-- Пагинация -->
+<!-- Таблица пользователей -->
+<div class="table-container">
+    <table class="users-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Логин</th>
+                <th>Email</th>
+                <th>Роль</th>
+                <th>Статус</th>
+                <th>Дата регистрации</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($users as $user): ?>
+            <tr>
+                <td><?= $user['id'] ?></td>
+                <td><?= htmlspecialchars($user['username']) ?></td>
+                <td><?= htmlspecialchars($user['email']) ?></td>
+                <td>
+                    <span class="role-badge role-<?= $user['role'] ?>">
+                        <?= $user['role'] ?>
+                    </span>
+                </td>
+                <td>
+                    <?php if ($user['is_banned']): ?>
+                        <span class="status-badge status-banned">Заблокирован</span>
+                    <?php else: ?>
+                        <span class="status-badge status-active">Активен</span>
+                    <?php endif; ?>
+                </td>
+                <td><?= date('d.m.Y H:i', strtotime($user['created_at'])) ?></td>
+                <td class="actions">
+                    <?php if ($user['id'] != $_SESSION['user_id']): ?>
+                        <?php if ($user['is_banned']): ?>
+                            <form method="post" class="action-form">
+                                <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
+                                <button type="submit" name="action" value="unban" class="btn-action btn-unban">
+                                    <i class="fas fa-unlock"></i>
+                                </button>
+                            </form>
+                        <?php else: ?>
+                            <form method="post" class="action-form">
+                                <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
+                                <button type="submit" name="action" value="ban" class="btn-action btn-ban">
+                                    <i class="fas fa-lock"></i>
+                                </button>
+                            </form>
+                        <?php endif; ?>
+                        
+                        <!-- Выпадающий список смены роли -->
+                        <form method="post" class="action-form role-change-form">
+                            <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
+                            <input type="hidden" name="action" value="change_role">
+                            <select name="new_role" onchange="this.form.submit()">
+                                <option value="user" <?= $user['role'] === 'user' ? 'selected' : '' ?>>Пользователь</option>
+                                <option value="moderator" <?= $user['role'] === 'moderator' ? 'selected' : '' ?>>Модератор</option>
+                                <option value="admin" <?= $user['role'] === 'admin' ? 'selected' : '' ?>>Администратор</option>
+                            </select>
+                        </form>
+                        
+                        <form method="post" class="action-form" onsubmit="return confirm('Вы уверены?')">
+                            <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
+                            <button type="submit" name="action" value="delete" class="btn-action btn-delete">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </form>
+                    <?php endif; ?>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
+
+<!-- Пагинация -->
 <div class="pagination">
     <?php
     $total_pages = ceil($total_users / $per_page);
@@ -343,20 +286,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create_user'])) {
             <?= $i ?>
         </a>
     <?php endfor; ?>
-
-    <?php 
-    // Кнопка "Вперед"
-    if ($page < $total_pages): 
-        $query_params['page'] = $page + 1;
-    ?>
-        <a href="?<?= http_build_query($query_params) ?>" class="page-nav">
-            <i class="fas fa-chevron-right"></i>
-        </a>
-    <?php endif; ?>
-</div>
-    </div>
 </div>
 
-<?php $conn->close(); ?>
-</body>
-</html>
+<?php
+// Подключаем подвал
+require_once __DIR__ . '../../includes/admin_footer.php';
+?>
