@@ -2,7 +2,6 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title><?= $page_title ?? 'Админ панель' ?></title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/admin.css?v=<?= time() ?>">
@@ -34,7 +33,7 @@
     <!-- Main Content -->
     <div class="main-content">
         <div class="dashboard-header">
-            <h1><?= $page_heading ?? 'Админ панель' ?></h1>
+            <h1><?= $page_heading ?? 'Личный кабинет' ?></h1>
             <a href="/logout.php" class="logout-btn">Выйти</a>
         </div>
 

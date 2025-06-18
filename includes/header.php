@@ -81,11 +81,6 @@
                         <i class="fas fa-sign-in-alt"></i> Войти
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="/register.php" class="nav-link register-link">
-                        <i class="fas fa-user-plus"></i> Регистрация
-                    </a>
-                </li>
             <?php endif; ?>
         </ul>
     </nav>

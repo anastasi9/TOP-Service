@@ -42,7 +42,7 @@ $recent_activities = [
 <div class="admin-container">
 <!-- Sidebar -->
     <div class="sidebar">
-        <h2>Админ панель</h2>
+        <h2>Панель управления</h2>
         <a href="/assets/admin/admin_main.php" <?= basename($_SERVER['PHP_SELF']) === 'admin_main.php' ? 'class="active"' : '' ?>>
             <i class="fas fa-tachometer-alt"></i> Главная
         </a>
@@ -52,12 +52,15 @@ $recent_activities = [
         <a href="\assets\admin\leads.php" <?= basename($_SERVER['PHP_SELF']) === 'leads.php' ? 'class="active"' : '' ?>>
             <i class="fas fa-tachometer-alt"></i> Лиды
         </a>
+        <a href="\assets\admin\helpline\helpline.php" <?= basename($_SERVER['PHP_SELF']) === 'helpline.php' ? 'class="active"' : '' ?>>
+            <i class="fas fa-tachometer-alt"></i> Заявки
+        </a>
     </div>
 
     <!-- Main Content -->
     <div class="main-content">
         <div class="dashboard-header">
-            <h1><i class="fas fa-tachometer-alt"></i> Панель управления</h1>
+            <h1><i class="fas fa-tachometer-alt"></i> Администратор</h1>
             <a href="/logout.php" class="logout-btn">Выйти</a>
         </div>
 
@@ -71,22 +74,12 @@ $recent_activities = [
                     <a href="user_management/list_users.php" class="stat-link">Управление <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-
-            <div class="stat-card">
-                <div class="stat-icon"><i class="fas fa-concierge-bell"></i></div>
-                <div class="stat-content">
-                    <h3>Услуги</h3>
-                    <p><?= $service_count ?></p>
-                    <a href="\pages\services.php" class="stat-link">Управление <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-
             <div class="stat-card">
                 <div class="stat-icon"><i class="fas fa-clipboard-list"></i></div>
                 <div class="stat-content">
                     <h3>Заявки</h3>
                     <p><?= $active_requests ?></p>
-                    <a href="requests/list_requests.php" class="stat-link">Просмотр <i class="fas fa-arrow-right"></i></a>
+                    <a href="\assets\admin\helpline\helpline.php" class="stat-link">Просмотр <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
             </div>
@@ -98,6 +91,7 @@ $recent_activities = [
                     <a href="/assets/admin/leads.php" class="stat-link">Просмотр <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
+            
         <!-- Последние действия -->
         <div class="recent-activity">
             <h3><i class="fas fa-history"></i> Последние действия</h3>

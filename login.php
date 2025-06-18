@@ -88,7 +88,7 @@ require 'includes/db_connect.php';
 
                 if($result->num_rows > 0){
                     $row = $result->fetch_assoc();
-                    // В реальном проекте используйте password_verify()
+                    
                     if($password === $row['password']) {
                         $_SESSION['user_role'] = $row['role'];
                         $_SESSION['user_id'] = $row['id'];
@@ -96,6 +96,10 @@ require 'includes/db_connect.php';
                         
                         if($row['role'] === 'admin') {
                             header('Location: /assets/admin/admin_main.php');
+                        } else if($row['role'] === 'moderator') {
+                            header('Location: /assets/moderator/moderator.php');
+                        } else if($row['role'] === 'user') {
+                            header('Location: /assets/admin/users/user.php');
                         } else {
                             header('Location: /');
                         }
