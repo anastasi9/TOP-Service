@@ -55,9 +55,9 @@ $recent_activities = [
     <a href="/assets/admin/leads.php" <?= basename($_SERVER['PHP_SELF']) === 'leads.php' ? 'class="active"' : '' ?>>
         <i class="fas fa-tachometer-alt"></i> Лиды
     </a>
-        <a href="/assets/admin/helpline/helpline.php" <?= basename($_SERVER['PHP_SELF']) === 'helpline.php' ? 'class="active"' : '' ?>>
-            <i class="fas fa-tachometer-alt"></i> Заявки
-        </a>
+    <a href="/assets/admin/helpline/helpline.php" <?= basename($_SERVER['PHP_SELF']) === 'helpline.php' ? 'class="active"' : '' ?>>
+        <i class="fas fa-tachometer-alt"></i> Заявки
+    </a>
     </div>
 
     <!-- Main Content -->
@@ -77,7 +77,7 @@ $recent_activities = [
                 <div class="stat-content">
                     <h3>Пользователи</h3>
                     <p><?= $user_count ?></p>
-                    <a href="user_management\list_users.php" class="stat-link">Проверить <i class="fas fa-arrow-right"></i></a>
+                    <a href="/assets/admin/user_management/list_users.php" class="stat-link">Проверить <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
 
@@ -95,7 +95,7 @@ $recent_activities = [
                 <div class="stat-content">
                     <h3>Заявки</h3>
                     <p>5</p>
-                    <a href="../../assets/admin/helpline/helpline.php" class="stat-link">Просмотр <i class="fas fa-arrow-right"></i></a>
+                    <a href="/assets/admin/helpline/helpline.php" class="stat-link">Просмотр <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
             

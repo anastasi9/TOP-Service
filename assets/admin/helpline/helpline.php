@@ -104,6 +104,7 @@ if (isset($_GET['ticket'])) {
 </head>
 <body>
 <?php include '../includes/admin_header.php'; ?>
+
 <div class="helpline-container">
     <div class="helpline-header">
         <h1><i class="fas fa-life-ring"></i> Центр поддержки</h1>

@@ -1,7 +1,9 @@
 <?php
 session_start();
-if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
-    header('Location: ../login.php');
+$allowed_roles = ['admin', 'moderator'];
+
+if (!isset($_SESSION['user_role']) || !in_array($_SESSION['user_role'], $allowed_roles)) {
+    header('Location: ../../../../login.php');
     exit();
 }
 
