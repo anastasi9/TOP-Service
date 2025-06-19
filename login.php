@@ -89,7 +89,7 @@ require 'includes/db_connect.php';
                 if($result->num_rows > 0){
                     $row = $result->fetch_assoc();
                     
-                    if($password === $row['password']) {
+                    if(password_verify($password, $row['password'])) {
                         $_SESSION['user_role'] = $row['role'];
                         $_SESSION['user_id'] = $row['id'];
                         $_SESSION['username'] = $row['username'];
