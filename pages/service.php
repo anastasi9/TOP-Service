@@ -131,35 +131,7 @@ require_once '../includes/header.php';
         <div class="container">
             <div class="row">
                 <div class="col-md-6 offset-md-3">
-                    <div class="service-form-container">
-                        <div class="section-header">
-                            <h2>Оставить заявку</h2>
-                            <p>Заполните форму и наш менеджер свяжется с вами</p>
-                        </div>
-                        
-                        <form class="service-form">
-                            <div class="form-group">
-                                <label>Ваше имя</label>
-                                <input type="text" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label>Телефон</label>
-                                <input type="tel" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label>Тип обслуживания</label>
-                                <select>
-                                    <option>Информационное</option>
-                                    <option>Техническое</option>
-                                    <option>Комплексное</option>
-                                </select>
-                            </div>
-                            
-                            <button type="submit" class="service-btn btn-primary">Отправить заявку</button>
-                        </form>
-                    </div>
+                    <?php include '..\includes\form.php'; ?>
                 </div>
             </div>
         </div>

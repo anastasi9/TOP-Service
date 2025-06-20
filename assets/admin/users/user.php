@@ -237,10 +237,11 @@ if ($is_ticket_details) {
         <!-- Список заявок -->
         <div class="tickets-container">
             <div class="tickets-header">
-                <h1><i class="fas fa-life-ring"></i> Техническая поддержка</h1>
+                <h1><i class="fas fa-headset"></i> Техническая поддержка</h1>
                 <button class="btn-new-ticket" id="newTicketBtn"><i class="fas fa-plus"></i> Новая заявка</button>
+                <a href="/logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Выйти</a>
             </div>
-            
+
             <?php if (isset($ticket_error)): ?>
                 <div class="alert alert-error"><?= $ticket_error ?></div>
             <?php endif; ?>

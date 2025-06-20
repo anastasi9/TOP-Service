@@ -22,7 +22,20 @@ $result = $conn->query($sql);
 if ($result && $row = $result->fetch_assoc()) {
     $user_count = $row['total'];
 }
-
+// Получение количества пользователей из таблицы users
+$user_count = 0;
+$sql_users = "SELECT COUNT(*) as total FROM users"; // Предполагается, что таблица называется 'users'
+$result_users = $conn->query($sql_users);
+if ($result_users && $row_users = $result_users->fetch_assoc()) {
+    $user_count = $row_users['total'];
+}
+// Получение количества активных тикетов (заявок) из таблицы tickets
+$active_requests = 0;
+$sql_tickets = "SELECT COUNT(*) as total FROM tickets WHERE status = 'open'"; // Используем 'open' вместо 'active'
+$result_tickets = $conn->query($sql_tickets);
+if ($result_tickets && $row_tickets = $result_tickets->fetch_assoc()) {
+    $active_requests = $row_tickets['total'];
+}
 // Пример последних действий
 $recent_activities = [
     ['username' => 'moderator1', 'action' => 'Проверен пользователь user123', 'time' => date('Y-m-d H:i', strtotime('-1 hour'))],
@@ -94,7 +107,7 @@ $recent_activities = [
                 <div class="stat-icon"><i class="fas fa-clipboard-list"></i></div>
                 <div class="stat-content">
                     <h3>Заявки</h3>
-                    <p>5</p>
+                    <p><?= $active_requests ?></p>
                     <a href="/assets/admin/helpline/helpline.php" class="stat-link">Просмотр <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>

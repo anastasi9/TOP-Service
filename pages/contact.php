@@ -3,82 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Контакты</title>
+    <title>Контакты и адреса</title>
     <link rel="stylesheet" href="../assets/css/style.css?v=<?= time() ?>">
     <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
 </head>
 <body>
 <?php
 session_start();
 require_once '../includes/header.php';
 require_once '../includes/db_connect.php';
-
-// Обработка отправки формы
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Получаем данные из формы
-    $name = trim($_POST['name'] ?? '');
-    $phone = trim($_POST['phone'] ?? '');
-
-    // Валидация полей
-    if (empty($name) || empty($phone)) {
-        $_SESSION['error_message'] = "Пожалуйста, заполните все поля.";
-    } else {
-        try {
-            // Подготовленный запрос для вставки данных в таблицу leads
-            $stmt = $conn->prepare("INSERT INTO leads (name, phone) VALUES (?, ?)");
-            $stmt->bind_param("ss", $name, $phone);
-
-            // Выполняем запрос
-            if ($stmt->execute()) {
-                $_SESSION['success_message'] = "Спасибо! Мы свяжемся с вами.";
-            } else {
-                $_SESSION['error_message'] = "Ошибка: Не удалось отправить заявку.";
-            }
-
-            // Закрываем подготовленный запрос
-            $stmt->close();
-        } catch (Exception $e) {
-            $_SESSION['error_message'] = "Произошла ошибка: " . htmlspecialchars($e->getMessage());
-        }
-        
-        // Перенаправляем на эту же страницу, чтобы избежать повторной отправки формы
-        header("Location: " . $_SERVER['PHP_SELF']);
-        exit();
-    }
-}
 ?>
-
-<!-- Вывод сообщений об ошибках/успехе -->
-<?php if (isset($_SESSION['error_message'])): ?>
-    <div class='error-message'><?= $_SESSION['error_message'] ?></div>
-    <?php unset($_SESSION['error_message']); ?>
-<?php endif; ?>
-
-<?php if (isset($_SESSION['success_message'])): ?>
-    <div class='success-message'><?= $_SESSION['success_message'] ?></div>
-    <?php unset($_SESSION['success_message']); ?>
-<?php endif; ?>
-
-<section id="offices" class="offices-section small-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="section-header">
-                    <h2>Наши офисы</h2>
-                    <p>
-                        <strong>Телефон:</strong> 
-                        <a href="tel:+78005006468">+7 (800) 500-64-68</a>
-                        <br>
-                        <strong>Email:</strong> 
-                        <a href="mailto:support@it-horeca.ru">support@it-horeca.ru</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- Блок с первой картой -->
 <section id="map" class="map-section">
     <div class="container">
@@ -111,34 +48,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 </section>
 
-<section id="order" class="service-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <div class="service-form-container">
-                    <div class="section-header">
-                        <h2>Оставить заявку на консультацию</h2>
-                        <p>Заполните форму и мы с вами свяжемся</p>
-                    </div>
-                    
-                    <form class="service-form" method="POST" action="">
-                        <div class="form-group">
-                            <label>Ваше имя</label>
-                            <input type="text" name="name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Телефон</label>
-                            <input type="tel" name="phone" required>
-                        </div>
-                        <button type="submit" class="service-btn btn-primary">Отправить заявку</button>
-                    </form>
+    <!-- Форма заявки -->
+    <section id="order" class="service-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <?php include '..\includes\form.php'; ?>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-
+    </section>
 <?php require_once '../includes/footer.php'; ?>
 </body>
 </html>

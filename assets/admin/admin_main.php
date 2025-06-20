@@ -14,11 +14,20 @@ $result = $conn->query($sql);
 if ($result && $row = $result->fetch_assoc()) {
     $lead_count = $row['total'];
 }
-
-// Пример данных для статистики
-$user_count = 128;
-$service_count = 24;
-$active_requests = 15;
+// Получение количества пользователей из таблицы users
+$user_count = 0;
+$sql_users = "SELECT COUNT(*) as total FROM users"; // Предполагается, что таблица называется 'users'
+$result_users = $conn->query($sql_users);
+if ($result_users && $row_users = $result_users->fetch_assoc()) {
+    $user_count = $row_users['total'];
+}
+// Получение количества активных тикетов (заявок) из таблицы tickets
+$active_requests = 0;
+$sql_tickets = "SELECT COUNT(*) as total FROM tickets WHERE status = 'open'"; // Используем 'open' вместо 'active'
+$result_tickets = $conn->query($sql_tickets);
+if ($result_tickets && $row_tickets = $result_tickets->fetch_assoc()) {
+    $active_requests = $row_tickets['total'];
+}
 
 // Пример последних действий
 $recent_activities = [

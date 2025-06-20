@@ -45,7 +45,7 @@
             <li class="nav-item"><a href="/pages/service.php" class="nav-link">Сервисное обслуживание</a></li>
             <li class="nav-item"><a href="/pages/services.php" class="nav-link">Услуги</a></li>
             <li class="nav-item"><a href="/pages/about.php" class="nav-link">О компании</a></li>
-            <li class="nav-item"><a href="/pages/contact.php" class="nav-link">Контакты</a></li>
+            <li class="nav-item"><a href="/pages/contact.php" class="nav-link">Контакты и адреса</a></li>
 
             
             <?php if (isset($_SESSION['user'])): ?>
@@ -98,7 +98,7 @@
                 'service' => 'Сервисное обслуживание',
                 'services' => 'Услуги',
                 'about' => 'О компании',
-                'contact' => 'Контакты',
+                'contact' => 'Контакты и адреса',
                 'contacts' => 'Контакты',
                 'login' => 'Вход',
                 'register' => 'Регистрация',

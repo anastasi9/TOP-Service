@@ -1,7 +1,7 @@
 <?php
-$servername = 'localhost';
-$username = 'root';
-$password = "mysql";
+$servername = '95.165.74.49';
+$username = 'Anastasia';
+$password = "hwos80(Z/Mfkk[xC";
 $dbname = 'topservice_db';
 
 // Создаем соединение MySQLi

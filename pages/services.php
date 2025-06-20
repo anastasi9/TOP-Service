@@ -200,5 +200,15 @@ function filterServices() {
     });
 }
 </script>
+    <!-- Форма заявки -->
+    <section id="order" class="service-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <?php include '..\includes\form.php'; ?>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
