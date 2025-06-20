@@ -27,10 +27,10 @@
                     <a href="tel:+78005006468" class="phone-link">
                         <i class="fas fa-phone"></i> +7 (800) 500-64-68
                     </a>
-                    <button class="callback-btn">
+                    <a href="#order" class="callback-btn">
                         <i class="fas fa-phone-volume"></i> Заказать звонок
-                    </button>
-                    <a href="#request-form" class="request-btn">
+                    </a>
+                    <a href="/login.php" class="request-btn">
                         <i class="fas fa-paper-plane"></i> Оставить заявку
                     </a>
                 </div>

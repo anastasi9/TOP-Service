@@ -63,8 +63,8 @@ require_once '../includes/header.php';
                         <li>Поддержка 1 рабочего места</li>
                     </ul>
                     <div class="solution-actions">
-                        <a href="#order" class="btn-primary" data-solution="R-keeper Базовый">Заказать</a>
-                        <a href="#details-rk-basic" class="btn-outline">Подробнее</a>
+                        <a href="#order" class="service-btn btn-primary cta-button" data-solution="R-keeper Базовый">Заказать</a>
+
                     </div>
                 </div>
                 
@@ -83,8 +83,8 @@ require_once '../includes/header.php';
                         <li>Поддержка до 5 рабочих мест</li>
                     </ul>
                     <div class="solution-actions">
-                        <a href="#order" class="btn-primary" data-solution="R-keeper Cloud">Заказать</a>
-                        <a href="#details-rk-cloud" class="btn-outline">Подробнее</a>
+                        <a href="#order" class="service-btn btn-primary cta-button" data-solution="R-keeper Cloud">Заказать</a>
+
                     </div>
                 </div>
                 
@@ -102,8 +102,8 @@ require_once '../includes/header.php';
                         <li>Неограниченные рабочие места</li>
                     </ul>
                     <div class="solution-actions">
-                        <a href="#order" class="btn-primary" data-solution="Полный пакет">Заказать</a>
-                        <a href="#details-full" class="btn-outline">Подробнее</a>
+                        <a href="#order" class="service-btn btn-primary cta-button" data-solution="Полный пакет">Заказать</a>
+
                     </div>
                 </div>
             </div>

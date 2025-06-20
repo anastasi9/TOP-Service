@@ -1390,3 +1390,7 @@ h1, h2, h3, h4, h5, h6, p {
     background: linear-gradient(90deg, #ff7e5f, #ffae00); /* Изменение градиента при наведении */
     box-shadow: 0 8px 25px rgba(255, 87, 51, 0.8); /* Усиление тени при наведении */
 }
+
+.header-actions a {
+    text-decoration: none;
+}

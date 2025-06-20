@@ -86,7 +86,16 @@ require_once 'includes/auth.php';  // Сессия запускается зде
         </div>
         </article>
     </main>
-
+    <!-- Форма заявки -->
+    <section id="order" class="service-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <?php include 'C:\Program Files\Ampps\www\includes\form.php'; ?>
+                </div>
+            </div>
+        </div>
+    </section>
     <?php include_once 'includes/footer.php'; ?>
     
     <!-- Подключение скриптов -->
