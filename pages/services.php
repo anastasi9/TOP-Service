@@ -155,12 +155,7 @@ require_once '../includes/header.php';
     <?php endforeach; ?>
 </div>
 
-<?php
 
-if (file_exists('../includes/footer.php')) {
-    require_once '../includes/footer.php';
-}
-?>
 
 <script src="../assets/js/script.js"></script>
 
@@ -210,5 +205,11 @@ function filterServices() {
             </div>
         </div>
     </section>
+<?php
+
+if (file_exists('../includes/footer.php')) {
+    require_once '../includes/footer.php';
+}
+?>
 </body>
 </html>

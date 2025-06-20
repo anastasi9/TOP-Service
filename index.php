@@ -84,22 +84,6 @@ require_once 'includes/auth.php';  // Сессия запускается зде
                 <a href="#" class="more-link">Подробнее</a>
             </div>
         </div>
-        
-    </section>
-        <div class="service-grid">
-            <div class="service-card">
-                <h3>Автоматизация для всей HoReCa</h3>
-                <p>Кассовая автоматизация — Системы учета — Автоматизация под ключ</p>
-                <a href="#" class="more-link">Подробнее</a>
-            </div>
-            <div class="service-card">
-                <h3>Сервисное обслуживание</h3>
-                <p>Описание услуги и преимущества</p>
-                <a href="#" class="more-link">Подробнее</a>
-            </div>
-        </div>
-    </section>
-
         </article>
     </main>
 
@@ -109,9 +93,3 @@ require_once 'includes/auth.php';  // Сессия запускается зде
     <script src="scripts/app.js" defer></script>
 </body>
 </html>
-
-
-
-
-
-

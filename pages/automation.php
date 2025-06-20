@@ -110,63 +110,13 @@ require_once '../includes/header.php';
         </div>
     </section>
 
-    <!-- Форма заказа -->
-    <section id="order" class="order-section">
+    <!-- Форма заявки -->
+    <section id="order" class="service-section">
         <div class="container">
-            <div class="order-form-container">
-                <h2 class="form-title">Оставить заявку</h2>
-                <form class="automation-form" id="automation-form">
-                    <div class="form-group">
-                        <label for="solution-type">Решение</label>
-                        <select id="solution-type" name="solution_type" required>
-                            <option value="" disabled selected>Выберите решение</option>
-                            <option value="rk-basic">R-keeper Базовый</option>
-                            <option value="rk-cloud">R-keeper Cloud</option>
-                            <option value="full-pack">Полный пакет</option>
-                            <option value="custom">Индивидуальное решение</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="contact-name">Ваше имя*</label>
-                            <input type="text" id="contact-name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="contact-phone">Телефон*</label>
-                            <input type="tel" id="contact-phone" name="phone" required>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="business-type">Тип бизнеса</label>
-                        <select id="business-type" name="business_type">
-                            <option value="" selected>Не выбрано</option>
-                            <option value="restaurant">Ресторан</option>
-                            <option value="cafe">Кафе</option>
-                            <option value="bar">Бар</option>
-                            <option value="hotel">Отель</option>
-                            <option value="other">Другое</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Дополнительная информация</label>
-                        <textarea id="message" name="message" rows="4"></textarea>
-                    </div>
-                    
-                    <div class="form-footer">
-                        <button type="submit" class="submit-btn">Отправить заявку</button>
-                        <p class="form-notice">
-                            Нажимая кнопку, вы соглашаетесь с 
-                            <a href="/privacy-policy">политикой конфиденциальности</a>
-                        </p>
-                    </div>
-                </form>
-            </div>
-            
-            <div class="order-image">
-                <img src="/img/automation/order-image.jpg" alt="Автоматизация HoReCa">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <?php include '..\includes\form.php'; ?>
+                </div>
             </div>
         </div>
     </section>

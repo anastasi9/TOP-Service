@@ -53,9 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form_submit']
             if ($stmt->execute()) {
                 $_SESSION['form_submitted'] = true;
                 $_SESSION['form_data'] = ['name' => $name];
-                // Перенаправляем на эту же страницу
-                header("Location: " . $_SERVER['REQUEST_URI']);
-                exit();
+
             } else {
                 $_SESSION['error_message'] = "Ошибка: Не удалось отправить заявку.";
             }
@@ -70,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form_submit']
 }
 ?>
 
-<link rel="stylesheet" href="/assets/css/style.css">
+
 
 <!-- Вывод сообщений об ошибках -->
 <?php if (isset($_SESSION['error_message'])): ?>
