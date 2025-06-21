@@ -68,37 +68,74 @@ require_once 'includes/auth.php';  // Сессия запускается зде
     <?php 
     include_once 'includes/header.php'; 
     ?>
+<section class="hero-section">
+    <div class="container">
 
-    <main>
-        <article>
-        <section class="services">
+        <p class="animate__animated animate__fadeIn animate__delay-1s">«ТОП СЕРВИС» — аккредитованная IT-компания, которая помогает бизнесу в HoReCa работать без перебоев.</p>
+    </div>
+</section>
+<main>
+    <section class="container">
         <div class="service-grid">
-            <div class="service-card">
+            <div class="service-card animate__animated animate__fadeInLeft">
                 <h3>Автоматизация для всей HoReCa</h3>
                 <p>Кассовая автоматизация — Системы учета — Автоматизация под ключ</p>
-                <a href="#" class="more-link">Подробнее</a>
+                <a href="#order" class="more-link">Подробнее</a>
             </div>
-            <div class="service-card">
+            <div class="service-card animate__animated animate__fadeInRight">
                 <h3>Сервисное обслуживание</h3>
-                <p>Описание услуги и преимущества</p>
-                <a href="#" class="more-link">Подробнее</a>
+                <p>ИТ-сопровождение объектов HoReCa, обслуживание кассовых систем, онлайн-мониторинг</p>
+                <a href="#order" class="more-link">Подробнее</a>
+            </div>
+            <div class="service-card animate__animated animate__fadeInLeft">
+                <h3>Технический запуск объектов</h3>
+                <p>Полный цикл работ от проектирования до ввода в эксплуатацию</p>
+                <a href="#order" class="more-link">Подробнее</a>
+            </div>
+            <div class="service-card animate__animated animate__fadeInRight">
+                <h3>Инженерные решения</h3>
+                <p>Прокладка сетей, ремонт помещений, монтаж оборудования</p>
+                <a href="#order" class="more-link">Подробнее</a>
             </div>
         </div>
-        </article>
-    </main>
+    </section>
+</main>
+
+<section class="stats-section">
+    <div class="container">
+        <h2 class="section-header animate__animated animate__fadeIn">Наши достижения</h2>
+        <div class="stats-grid">
+            <div class="stat-item animate__animated animate__fadeInUp animate__delay-1s">
+                <div class="stat-number">6+</div>
+                <div class="stat-label">лет на рынке</div>
+            </div>
+            <div class="stat-item animate__animated animate__fadeInUp animate__delay-1s">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">довольных клиентов</div>
+            </div>
+            <div class="stat-item animate__animated animate__fadeInUp animate__delay-1s">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">поддержка</div>
+            </div>
+            <div class="stat-item animate__animated animate__fadeInUp animate__delay-1s">
+                <div class="stat-number">99%</div>
+                <div class="stat-label">успешных решений</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
     <!-- Форма заявки -->
     <section id="order" class="service-section">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 offset-md-3">
-                    <?php include 'C:\Program Files\Ampps\www\includes\form.php'; ?>
+                  <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/form.php'; ?>
                 </div>
             </div>
         </div>
     </section>
     <?php include_once 'includes/footer.php'; ?>
-    
-    <!-- Подключение скриптов -->
-    <script src="scripts/app.js" defer></script>
 </body>
 </html>

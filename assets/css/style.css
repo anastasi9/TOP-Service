@@ -1,3 +1,146 @@
+/* Дополнительные стили для страницы "О компании" */
+.hero-section {
+    background: linear-gradient(135deg, #533b77 0%, #36274d 100%);
+    padding: 50px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+    background-size: cover;
+    opacity: 0.15;
+    z-index: 1;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-section h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.hero-section p {
+    font-size: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0.9;
+}
+
+.content-section {
+    background-color: #ffffff;
+    color: #333;
+    padding: 80px 0;
+}
+
+.about-content h2 {
+    color: #533b77;
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.about-content h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #FF6B6B, #FF8E53);
+    border-radius: 2px;
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+.features-list {
+    margin: 2rem 0 3rem;
+}
+
+.features-list li {
+    background: rgba(83, 59, 119, 0.05);
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.features-list li:hover {
+    background: rgba(83, 59, 119, 0.1);
+    transform: translateX(5px);
+}
+
+.stats-section {
+    background: linear-gradient(135deg, #533b77 0%, #36274d 100%);
+    padding: 80px 0;
+    color: white;
+    text-align: center;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.stat-item {
+    background: rgba(255,255,255,0.1);
+    padding: 30px 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #FF8E53;
+}
+
+.stat-label {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-section p {
+        font-size: 1.2rem;
+    }
+    
+    .about-content h2 {
+        font-size: 1.8rem;
+    }
+}
+
 /* Основные стили */
 body.service-page {
   background-color: #533b77;
@@ -223,34 +366,42 @@ header {
 }
 
 .callback-btn, .request-btn {
-  padding: 8px 15px;
-  border-radius: 4px;
-  font-size: 14px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  transition: all 0.3s;
+    padding: 8px 15px;
+    background: linear-gradient(90deg, #ff6d45, #ff8f40); /* Светлый градиент */
+    color: white;
+    border: none;
+    border-radius: 20px; /* Закруглённые углы */
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 10px rgba(255, 120, 85, 0.4); /* Светлая тень */
+    font-weight: 500;
 }
 
-.callback-btn {
-  background-color: #e74c3c;
-  color: white;
-  border: none;
+.callback-btn:hover, .request-btn:hover {
+    background: linear-gradient(90deg, #ff7a55, #ff9d4d ); /* Немного темнее при наведении */
+    box-shadow: 0 4px 15px rgba(255, 120, 85, 0.5);
 }
 
-.callback-btn:hover {
-  background-color: #c0392b;
+.callback-btn:active, .request-btn:active {
+    background: linear-gradient(90deg, #ff5e35, #ff8238); /* Акцент при нажатии */
+    box-shadow: 0 1px 5px rgba(255, 255, 255, 0.8); /* Очень светлая тень */
+    transform: translateY(1px);
 }
+
 
 .request-btn {
-  background-color: #2ecc71;
+  background-color: #533b77;
   color: white;
   text-decoration: none;
 }
 
 .request-btn:hover {
-  background-color: #27ae60;
+  background-color: #36274d;
 }
 
 /* Стили навигационного меню */
@@ -1272,36 +1423,6 @@ h1, h2, h3, h4, h5, h6, p {
     text-decoration: underline;
 }
 
-/* Стили для карт */
-.map-section {
-    background-color: #f9f9f9;
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
-}
-
-.map-section h3 {
-    font-size: 28px;
-    margin-bottom: 10px;
-    color: #e17400;
-    text-align: center;
-}
-
-.map-section h4 {
-    font-size: 20px;
-    margin-bottom: 25px;
-    color: #555;
-    text-align: center;
-    font-weight: 400;
-}
-
-.yandex-map {
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px white;
-    margin: 0 auto;
-    max-width: 1000px;
-}
-
 /* Стили для формы */
 .service-form-container {
     background: e17400;
@@ -1394,3 +1515,287 @@ h1, h2, h3, h4, h5, h6, p {
 .header-actions a {
     text-decoration: none;
 }
+
+/* Дополнительные стили для страницы контактов */
+    .map-section {
+        padding: 5rem 0;
+        background-color: rgba(83, 59, 119, 0.95);
+    }
+    
+    .office-card {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        margin-bottom: 3rem;
+        transition: transform 0.3s ease;
+    }
+    
+    .office-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .office-info {
+        padding: 2rem;
+    }
+    
+    .office-info h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #FF8E53;
+    }
+    
+    .address {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .contact-details p {
+        margin-bottom: 0.8rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .contact-details a {
+        color: #3498db;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    
+    .contact-details a:hover {
+        color: #FF8E53;
+        text-decoration: underline;
+    }
+    
+
+    
+    .section-header h2 i {
+        margin-right: 15px;
+        color: #FF8E53;
+    }
+    
+    .email-link {
+        color: #3498db;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    
+    .email-link:hover {
+        color: #FF8E53;
+        text-decoration: underline;
+    }
+    
+    @media (min-width: 992px) {
+        .office-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        
+        .yandex-map {
+            border-radius: 0 12px 12px 0;
+            height: 100%;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .office-info {
+            padding: 1.5rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2rem;
+        }
+    }
+
+
+
+            /* Основные стили главной страницы */
+        .hero-section {
+            background: linear-gradient(135deg, #533b77 0%, #36274d 100%);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+            background-size: cover;
+            opacity: 0.15;
+            z-index: 1;
+        }
+        
+        .hero-section .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .hero-section p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            background: linear-gradient(90deg, #FF6B6B, #FF8E53);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 105, 107, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 105, 107, 0.4);
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 80px 0;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, #533b77, #FF8E53);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+        
+        .service-card:hover::before {
+            width: 100%;
+            opacity: 0.1;
+        }
+        
+        .service-card h3 {
+            color: #533b77;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .service-card p {
+            color: #555;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .more-link {
+            color: #FF8E53;
+            text-decoration: none;
+            font-weight: bold;
+            position: relative;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .more-link::after {
+            content: '→';
+            margin-left: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .more-link:hover::after {
+            margin-left: 10px;
+        }
+        
+        .stats-section {
+            background: linear-gradient(135deg, #533b77 0%, #36274d 100%);
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .stat-item {
+            background: rgba(255,255,255,0.1);
+            padding: 30px 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #FF8E53;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-section p {
+                font-size: 1.2rem;
+            }
+            
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+        }

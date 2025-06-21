@@ -115,7 +115,7 @@ require_once '../includes/header.php';
         <div class="container">
             <div class="row">
                 <div class="col-md-6 offset-md-3">
-                    <?php include '..\includes\form.php'; ?>
+                    <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/form.php'; ?>
                 </div>
             </div>
         </div>
