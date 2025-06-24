@@ -5,7 +5,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // Подключение к БД и проверка авторизации
-require_once 'C:\Program Files\Ampps\www\includes\db_connect.php';
+require_once '../../../includes/db_connect.php';
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
